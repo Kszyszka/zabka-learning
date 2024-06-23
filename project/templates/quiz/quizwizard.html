@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Create Quiz Question{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    
+    <!-- Name of the Quiz -->
+    <label for="quiz_name">Name of the Quiz:</label>
+    <input type="text" id="quiz_name" name="quiz_name">
+    <br><br>
+    
+    <!-- Question Text -->
+    <label for="question_text">Treść pytania:</label>
+    <input type="text" id="question_text" name="question_text">
+    <br><br>
+    
+    <!-- Answers -->
+    <label for="answer1">Odp. 1:</label>
+    <input type="text" id="answer1" name="answer1">
+    <br>
+    <label for="answer2">Odp. 2:</label>
+    <input type="text" id="answer2" name="answer2">
+    <br>
+    <label for="answer3">Odp. 3:</label>
+    <input type="text" id="answer3" name="answer3">
+    <br>
+    <label for="answer4">Odp. 4:</label>
+    <input type="text" id="answer4" name="answer4">
+    <br><br>
+    
+    <!-- Correct Answer -->
+    <label for="correct_answer">Poprawna odp. (1-4):</label>
+    <input type="number" id="correct_answer" name="correct_answer" min="1" max="4">
+    <br><br>
+    
+    <!-- View Previously Added Questions -->
+    <h3>Previously Added Questions:</h3>
+    {% for question in previous_questions %}
+        <p>{{ question.text }}</p>
+        <!-- Display other question details as needed -->
+    {% empty %}
+        <p>No questions added yet.</p>
+    {% endfor %}
+    <br>
+    
+    <!-- Submit Quiz Button -->
+    <input type="submit" value="Add Question">
+    <input type="submit" value="Submit Quiz">  <!-- Add this button -->
+</form>
+{% endblock %}
