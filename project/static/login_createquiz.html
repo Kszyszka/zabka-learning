@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imigrant na tratwie</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="rzapka.png" alt="imigrant">
+        </div>
+        <div class="login">
+            <span id="username-display">Witaj, Użytkowniku!</span>
+            <a href="#" id="logout-link">Wyloguj się</a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="login_panel.html">Główna</a></li>
+            <li><a href="login_quizy.html">Quizy</a></li>
+    
+        </ul>
+    </nav>
+    <main>
+        <section id="quizy">
+            <div class="container">
+                <h2>Stwórz nowy quiz</h2>
+                <div class="form-group">
+                    <label for="quiz-name">Nazwa quizu</label>
+                    <input type="text" id="quiz-name" placeholder="Wpisz nazwę quizu">
+                </div>
+                <form id="create-quiz-form">
+                    <div class="form-group">
+                        <label for="question">Pytanie</label>
+                        <input type="text" id="question" placeholder="Wpisz treść pytania">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer1">Odpowiedź 1</label>
+                        <input type="text" id="answer1" placeholder="Wpisz odpowiedź 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer2">Odpowiedź 2</label>
+                        <input type="text" id="answer2" placeholder="Wpisz odpowiedź 2">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer3">Odpowiedź 3</label>
+                        <input type="text" id="answer3" placeholder="Wpisz odpowiedź 3">
+                    </div>
+                    <div class="form-group">
+                        <label for="answer4">Odpowiedź 4</label>
+                        <input type="text" id="answer4" placeholder="Wpisz odpowiedź 4">
+                    </div>
+                    <div class="form-group">
+                        <label for="correct-answer">Poprawna odpowiedź</label>
+                        <select id="correct-answer">
+                            <option value="answer1">Odpowiedź 1</option>
+                            <option value="answer2">Odpowiedź 2</option>
+                            <option value="answer3">Odpowiedź 3</option>
+                            <option value="answer4">Odpowiedź 4</option>
+                        </select>
+                    </div>
+                    <button type="button" id="add-question-btn">Dodaj pytanie</button>
+                </form>
+                <div id="questions-container">
+                    <h3>Dodane pytania:</h3>
+                    <ul id="questions-list"></ul>
+                </div>
+                <button id="submit-quiz-btn">Dodaj quiz do bazy</button>
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <p>&copy; 2024 Imigrant na tratwie. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+    <script src="js/addquiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+/* Existing CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding-top: 60px; /* Height of the fixed header */
+}
+
+/* Animacja dla header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: top 0.3s, background-color 0.3s;
+    z-index: 1000;
+}
+
+header.hide {
+    top: -100px;
+}
+
+header:hover {
+    background-color: #444;
+}
+
+header .logo img {
+    height: 50px; 
+}
+
+/* Responsywny nav */
+nav {
+    width: 200px;
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    background-color: #444;
+    height: 100%;
+    padding-top: 1em;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 1em 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5em;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+main {
+    margin-left: 220px; 
+    padding: 2em;
+}
+
+main section {
+    margin-bottom: 2em;
+}
+
+.login a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #4CAF50;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.login a:hover {
+    background-color: #45a049;
+}
+
+/* Animacja dla footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: -100px; /* Hidden initially */
+    width: 100%;
+    transition: bottom 0.3s;
+}
+
+footer.show {
+    bottom: 0; /* Slide up into view */
+}
+
+footer .social-media a {
+    margin: 0 0.5em;
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .social-media a:hover {
+    color: #4CAF50;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 0.5em 0 0.2em;
+}
+
+form input, form textarea {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+form button {
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
+
+.quiz-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.quiz-option {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+}
+
+.quiz-option button {
+    padding: 20px 40px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.quiz-option button:hover {
+    background-color: #45a049;
+}
+
+/* Stylizacja formularza ustawień */
+#settings {
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#settings h2 {
+    margin-bottom: 1em;
+}
+
+#settings form {
+    display: flex;
+    flex-direction: column;
+}
+
+#settings form label {
+    margin-bottom: 0.5em;
+}
+
+#settings form input {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#settings form button {
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+#settings form button:hover {
+    background-color: #45a049;
+}
+
+/* Stylizacja sekcji kontaktowej */
+#contact table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+#contact table, #contact th, #contact td {
+    border: 1px solid #ccc;
+}
+
+#contact th, #contact td {
+    padding: 0.5em;
+    text-align: left;
+    background-color: #fff;
+}
+
+#contact th {
+    background-color: #f4f4f4;
+}
+
+.footer-section {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+.footer-section .social-media a {
+    margin: 0 0.5em;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.footer-section .social-media a:hover {
+    color: #333;
+}
+
+/* Stylizacja postępu quizu */
+.progress {
+    margin-top: 2em;
+}
+
+.progress h3 {
+    margin-bottom: 1em;
+}
+
+.progress p {
+    margin: 0.5em 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+.progress-bar-inner {
+    height: 20px;
+    background-color: #4CAF50;
+    width: 0;
+    transition: width 0.5s;
+}
+
+.overall-progress {
+    margin-top: 2em;
+}
+.login {
+    display: flex;
+    align-items: center;
+}
+
+#username-display {
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+#current-username {
+    display: block;
+    margin-top: 0.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+#about {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+#about h3 {
+    text-align: left;
+    margin-top: 1em;
+}
+
+#about ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
