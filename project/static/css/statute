@@ -108,3 +108,15 @@ footer p {
         padding: 10px;
     }
 }
+
+.regulamin-container {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.regulamin-container iframe {
+    width: 100%;
+    height: 100%;
+}

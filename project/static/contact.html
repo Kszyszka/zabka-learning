@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qmaj Rzabe</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles_mainpage">
+    <link rel="stylesheet" href="css/new_styles_mainpage.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header class="w-100">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
             <a class="navbar-brand" href="#">
@@ -31,12 +31,32 @@
             </div>
         </nav>
     </header>
-    <main class="main-content d-flex flex-column align-items-center justify-content-center">
-        <div class="info-box">
-            <h1>Witaj w Qmaj Rzabe</h1>
-            <p>Platforma e-learningowa pełna zabawy i interaktywnych quizów.</p>
-            <a id="join-button" class="btn btn-success text-white" href="signup.html">Dołącz do nas!</a>
-            <a id="button" class="btn btn-success text-white" href="">Przeglądaj Quizy!</a>
+    <main class="main-content flex-grow-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Skontaktuj się przez formularz</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Imię</label>
+                            <input type="text" class="form-control" id="name" placeholder="Wpisz swoje imię">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Wpisz swój email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Wiadomość</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Wpisz swoją wiadomość"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Wyślij</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h2>Nasza lokalizacja</h2>
+                    <div id="map" style="height: 400px;"></div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="bg-dark text-white text-center py-3 mt-auto w-100">
@@ -45,6 +65,19 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            var location = { lat: 52.2296756, lng: 21.0122287 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
 </body>
 </html>
