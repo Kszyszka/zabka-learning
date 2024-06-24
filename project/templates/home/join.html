@@ -1,0 +1,37 @@
+{% extends "home_base.html" %}
+{% block content %}
+<div id="auth-buttons" class="d-flex flex-column align-items-center">
+    <a id="login-button" class="btn btn-success text-white my-2" href="#">LOGOWANIE</a>
+    <a id="register-button" class="btn btn-success text-white my-2" href="#">REJESTRACJA</a>
+</div>
+<div id="login-form" class="form-container position-relative">
+    <form action="#" method="post" class="p-3">
+        <div class="form-group">
+            <label for="login-email">Email:</label>
+            <input type="email" class="form-control" id="login-email" name="login-email" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Hasło:</label>
+            <input type="password" class="form-control" id="login-password" name="login-password" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Zaloguj się</button>
+    </form>
+</div>
+<div id="register-form" class="form-container position-relative">
+    <form action="#" method="post" class="p-3">
+        <div class="form-group">
+            <label for="register-email">Email:</label>
+            <input type="email" class="form-control" id="register-email" name="register-email" required>
+        </div>
+        <div class="form-group">
+            <label for="register-password">Hasło:</label>
+            <input type="password" class="form-control" id="register-password" name="register-password" required>
+        </div>
+        <div class="form-group">
+            <label for="register-confirm-password">Potwierdź hasło:</label>
+            <input type="password" class="form-control" id="register-confirm-password" name="register-confirm-password" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Zarejestruj się</button>
+    </form>
+</div>
+{% endblock content %}
