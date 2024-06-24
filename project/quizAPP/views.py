@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -7,10 +8,14 @@ from .forms import QuizForm, QuestionForm
 
 # Create your views here.
 
-basepath = "..\\templates\\quiz\\"
+#basepath = "..\\templates\\quiz\\"
+logger = logging.getLogger('django')
+
+
 
 def home(request):
-    return render(request, f'{basepath}home.html')
+    logger.info('------------------here goes your message')
+    return render(request, 'quiz/home.html')
 
 def create_quiz(request):
     if request.method == 'POST':
@@ -53,6 +58,7 @@ def add_question(request):
         question_form = QuestionForm(request.POST)
         if question_form.is_valid():
             question_form.save()
+            print('is this even being called')
             return redirect('add_question')  # Adjust as necessary
     
     # Ensure the quiz form is empty when rendering the add_question form
@@ -66,7 +72,7 @@ def add_question(request):
         'quizzes': quizzes,
         'previous_questions': previous_questions,
     }
-    return render(request, f'{basepath}quizwizard.html', context)
+    return render(request, f'quiz/quizwizard.html', context)
 
 
 def quiz_list(request):
