@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qmaj Rzabe</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="w-100">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" class="img-fluid" style="max-width: 50px;" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="mainpage.html">Strona Główna</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Czym jest Qmaj Rzabe?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Regulamin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+                
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+        <main class="my-5 w-100 d-flex flex-column align-items-center justify-content-center">
+            <div id="auth-buttons" class="d-flex flex-column align-items-center">
+                <a id="login-button" class="btn btn-success text-white my-2" href="#">LOGOWANIE</a>
+                <a id="register-button" class="btn btn-success text-white my-2" href="#">REJESTRACJA</a>
+            </div>
+            <div id="login-form" class="form-container position-relative">
+                <form action="#" method="post" class="p-3">
+                    <div class="form-group">
+                        <label for="login-email">Email:</label>
+                        <input type="email" class="form-control" id="login-email" name="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Hasło:</label>
+                        <input type="password" class="form-control" id="login-password" name="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Zaloguj się</button>
+                </form>
+            </div>
+            <div id="register-form" class="form-container position-relative">
+                <form action="#" method="post" class="p-3">
+                    <div class="form-group">
+                        <label for="register-email">Email:</label>
+                        <input type="email" class="form-control" id="register-email" name="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Hasło:</label>
+                        <input type="password" class="form-control" id="register-password" name="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Potwierdź hasło:</label>
+                        <input type="password" class="form-control" id="register-confirm-password" name="register-confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Zarejestruj się</button>
+                </form>
+            </div>
+        </main>
+        <footer class="bg-dark text-white text-center py-3 mt-auto w-100">
+            <p>&copy; 2024 Fun Learning. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
