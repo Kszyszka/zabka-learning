@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,12 +8,12 @@
     <meta name="keywords" content="edukacja, quizy, nauka, imigrant">
     <meta name="author" content="Imigrant na tratwie">
     <title>Quizy - Imigrant na tratwie</title>
-    <link rel="stylesheet" href="css/login_quizy.css">
+    <link rel="stylesheet" href="{% static 'css/login_quizy.css' %}">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="rzapka.png" alt="imigrant">
+            <img src="{% static 'images/rzapka.png' %}" alt="imigrant">
         </div>
         <div class="login">
             <span id="username-display">Witaj, Użytkowniku!</span>
@@ -21,8 +22,8 @@
     </header>
     <nav>
         <ul>
-            <li><a href="login_panel.html">Główna</a></li>
-            <li><a href="login_quizy.html">Quizy</a></li>
+            <li><a href="{% url 'home' %}">Główna</a></li>
+            <li><a href="{% url 'quizlist' %}">Quizy</a></li>
         </ul>
     </nav>
     <main>
@@ -62,6 +63,6 @@
         <div class="social-media">
         </div>
     </footer>
-    <script src="js/login.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
