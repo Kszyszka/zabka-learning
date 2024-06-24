@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ececea;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.description-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.content-wrapper {
+    margin-top: 20px;
+}
+
+.description-box {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .description-box, .description-image {
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    width: 100%;
+}
