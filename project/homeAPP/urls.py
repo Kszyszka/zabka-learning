@@ -6,5 +6,5 @@ urlpatterns = [
     path('join', views.main_join, name="join"),
     path('aboutus', views.aboutus, name="aboutus"),
     path('termsofuse', views.terms, name="terms"),
-    path('contact', views.contact, name="contact")
+    path('contact', views.contact, name="contact"),
 ]
