@@ -14,34 +14,37 @@ def home(request):
 
 def create_quiz(request):
     if request.method == 'POST':
-        quiz_form = QuizForm(request.POST)
-        if quiz_form.is_valid():
-            quiz = quiz_form.save(commit=False)
-            quiz.created_by = request.user  # Set the current user
-            quiz.save()
-            
-            # Optionally, add a success message
-            messages.success(request, 'Quiz created successfully!')
-            
-            # Store the quiz ID in the session
-            request.session['current_quiz_id'] = quiz.id
-            
-            return redirect('quiz_list')  # Redirect to quiz list or any other page
-    else:
-        quiz_form = QuizForm()
+        quiz_title = request.POST.get('quiz-name')
+        questions = request.POST.getlist('questions')
+        
+        # Create the Quiz
+        quiz = Quiz.objects.create(
+            title=quiz_title,
+            created_by=request.user
+        )
+        
+        # Add Questions to Quiz
+        for question_data in questions:
+            question_text = question_data['question_text']
+            answer1 = question_data['answer1']
+            answer2 = question_data['answer2']
+            answer3 = question_data['answer3']
+            answer4 = question_data['answer4']
+            correct_answer = question_data['correct_answer']
+
+            Question.objects.create(
+                quiz=quiz,
+                question_text=question_text,
+                answer1=answer1,
+                answer2=answer2,
+                answer3=answer3,
+                answer4=answer4,
+                correct_answer=correct_answer
+            )
+        
+        return redirect('quizlist')  # Redirect to the quiz list view
     
-    # Ensure the question form is empty when rendering the create_quiz form
-    question_form = QuestionForm()
-    quizzes = Quiz.objects.all()
-    previous_questions = Question.objects.all()
-    
-    context = {
-        'quiz_form': quiz_form,
-        'question_form': question_form,
-        'quizzes': quizzes,
-        'previous_questions': previous_questions,
-    }
-    return render(request, f'{basepath}quizwizard.html', context)
+    return render(request, 'quiz/login_createquiz.html')
 
 
 
@@ -68,7 +71,7 @@ def add_question(request):
 
 def quiz_list(request):
     quizzes = Quiz.objects.all()  # Replace Quiz with your actual Quiz model - to be added once 
-    return render(request, 'quiz/quizlist.html', {'quizzes': quizzes})  # Replace with your actual template for quiz list
+    return render(request, 'quiz/login_quizy.html', {'quizzes': quizzes})  # Replace with your actual template for quiz list
 
 def question_list(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
