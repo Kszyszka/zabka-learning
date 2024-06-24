@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const addQuestionBtn = document.getElementById('add-question-btn');
-    const questionsList = document.getElementById('questions-list');
     const submitQuizBtn = document.getElementById('submit-quiz-btn');
     const quizNameInput = document.getElementById('quiz-name');
+    const questionsList = document.getElementById('questions-list');
 
     let questions = [];
 
@@ -34,12 +34,33 @@ document.addEventListener('DOMContentLoaded', function () {
         const quizName = quizNameInput.value;
 
         if (quizName && questions.length > 0) {
-            // Tu dodaj kod do wysłania quizu do bazy danych
-            console.log({
+            const formData = {
                 quizName,
-                questions
+                questions  // This line was modified to match the expected structure
+            };
+
+            fetch('/quiz/create/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Ensure CSRF token is sent
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to add quiz.');
+                }
+            })
+            .then(data => {
+                alert('Quiz został dodany do bazy danych.');
+                // Optionally, clear form fields or perform other actions
+            })
+            .catch(error => {
+                console.error('Error:',error);
             });
-            alert('Quiz został dodany do bazy danych.');
         } else {
             alert('Proszę podać nazwę quizu i dodać przynajmniej jedno pytanie.');
         }
@@ -52,5 +73,22 @@ document.addEventListener('DOMContentLoaded', function () {
             li.textContent = `${index + 1}. ${q.question} (Poprawna odpowiedź: ${q.correctAnswer})`;
             questionsList.appendChild(li);
         });
+    }
+
+    // Function to retrieve CSRF token
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
 });
