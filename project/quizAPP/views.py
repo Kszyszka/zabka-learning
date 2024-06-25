@@ -25,11 +25,13 @@ def create_quiz(request):
             data = json.loads(request.body)
             quiz_title = data.get('quizName')
             questions = data.get('questions')
+            quiz_desc = data.get('quizDescription')
             
             # Create the Quiz
             quiz = Quiz.objects.create(
                 title=quiz_title,
-                created_by=request.user
+                created_by=request.user,
+                description=quiz_desc
             )
             
             # Add Questions to Quiz

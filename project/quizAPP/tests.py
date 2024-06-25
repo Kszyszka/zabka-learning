@@ -19,6 +19,3 @@ def QuizTest():
     )
 def test2():
     print('koniec testu')
-
-
-

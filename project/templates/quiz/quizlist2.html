@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Poll Questions</h1>
+    {% if quizlist2 %}
+        {% for i in quizlist2 %}
+            <div>
+                <p>{{ i.title }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nie ma dostępnych żadnych quizów.</p>
+    {% endif %}    
+{% endblock %}

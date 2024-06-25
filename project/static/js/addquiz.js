@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addQuestionBtn = document.getElementById('add-question-btn');
     const submitQuizBtn = document.getElementById('submit-quiz-btn');
     const quizNameInput = document.getElementById('quiz-name');
-    const quizDescInput = document.getElementById('quiz-desc');
+    const quizDescriptionInput = document.getElementById('quiz-description')
     const questionsList = document.getElementById('questions-list');
 
     let questions = [];
@@ -33,18 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     submitQuizBtn.addEventListener('click', function () {
         const quizName = quizNameInput.value;
-        let quizDesc = quizDescInput.value;
+        let quizDescription = quizDescriptionInput.value;
 
-        if (quizDesc.length == 0) {
-            quizDesc = "Nie dodano opisu.";
+        if (quizDescription.length == 0) {
+            quizDescription = 'Nie dodano opisu.';
         }
 
         if (quizName && questions.length > 0) {
             const formData = {
                 quizName,
                 questions,  // This line was modified to match the expected structure
-                quizDesc
+                quizDescription
             };
+        
 
             fetch('/quiz/create/', {
                 method: 'POST',
