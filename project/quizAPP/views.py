@@ -16,7 +16,7 @@ logger = logging.getLogger('django')
 
 
 
-def home(request):    
+def quizhome(request):    
     return render(request, 'quiz/home.html')
 
 def create_quiz(request):    
