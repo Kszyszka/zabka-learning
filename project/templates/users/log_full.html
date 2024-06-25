@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="css2.css">
-</head>
-<body>
-    <div class="login-container">
-        <div class="logo">
-            <img src="ww.jpg" alt="rzaba" height="55px" width="55px">
-        </div>
-        <div class="account">
-            <input type="text" placeholder="Nazwa urzytkownika" class="input-field"> <br>
-            <input type="password" placeholder="Hasło" class="input-field"> <br>
-            <button class="login-button">Login</button> <br>
-            <a href="reg_full.html" class="register-link">Register</a>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "log_reg_template.html" %}
+{% block content %}
+    <input type="text" placeholder="Nazwa uzytkownika" class="input-field"> <br>
+    <input type="password" placeholder="Hasło" class="input-field"> <br>
+    <button class="login-button">Login</button> <br>
+    <a href="reg_full.html" class="register-link">Register</a>
+{% endblock %}

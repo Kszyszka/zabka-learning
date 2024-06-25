@@ -18,7 +18,7 @@ def login_view(request):
             return redirect('quizhome')
         else:
             messages.error(request, 'Logged in Fail')
-    return render(request, 'users/signin.html')
+    return render(request, 'users/log_full.html')
 
 def signup_user(request):
     """Funkcja tworząca widok obsługujący formularz rejestracji."""
@@ -30,7 +30,7 @@ def signup_user(request):
             return redirect('quizhome')
         else:
             messages.error(request, 'Sing up Fail, User already exists')
-    return render(request, 'users/signup.html')
+    return render(request, 'users/reg_full.html')
 
 def join_quiz(request):
     return render(request, 'users/joinquiz.html')
