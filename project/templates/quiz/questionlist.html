@@ -3,7 +3,7 @@
 {% block title %}Questions for {{ quiz.title }}{% endblock %}
 
 {% block content %}
-  <h2>Questions for "{{ quiz.title }}"</h2>
+  <h2>Pytania dla: {{ quiz.title }}</h2>
   <ul>
     {% for question in quiz.questions.all %}
       <li>
@@ -12,7 +12,7 @@
         2. {{ question.answer2 }}<br>
         3. {{ question.answer3 }}<br>
         4. {{ question.answer4 }}<br>
-        <em>Correct Answer: {{ question.correct_answer }}</em>
+        <em>Poprawna odpowiedź: {{ question.correct_answer }}</em>
       </li>
     {% endfor %}
   </ul>
