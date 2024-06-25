@@ -1,9 +1,14 @@
 {% extends "log_reg_template.html" %}
 {% block content %}
-    <input type="text" placeholder="Wpisz nazwę użytkownika" class="input-field"> <br>
-    <input type="email" placeholder="Wpisz adres email" class="input-field"> <br>
-    <input type="password" placeholder="Wpisz hasło" class="input-field"> <br>
-    <input type="password" placeholder="Powtórz hasło" class="input-field"> <br>
-    <button class="login-button">Utwórz konto</button> <br>
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Wpisz nazwę użytkownika" class="input-field" name="username"><br>
+        <input type="password" placeholder="Wpisz hasło" class="input-field" name="password"><br>
+        <input type="password" placeholder="Powtórz hasło" class="input-field" name="password2"><br>
+        <button class="login-button" type="submit">Utwórz konto</button><br>
+    </form>
     <a href="{% url 'signin' %}" class="register-link">Powrót do logowania</a>
 {% endblock %}
