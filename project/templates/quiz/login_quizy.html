@@ -55,6 +55,18 @@
                         <div class="progress-bar-inner" style="width: 70%;"></div>
                     </div>
                 </div>
+                    {% block content %}
+                        <h3>Lista quizów</h3>
+                        {% if quizlist %}
+                            {% for i in quizlist %}
+                                <div>
+                                    <p>{{ i.title }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Nie ma dostępnych żadnych quizów.</p>
+                        {% endif %}    
+                    {% endblock %}
             </div>
         </section>
     </main>
