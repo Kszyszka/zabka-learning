@@ -15,22 +15,25 @@ def login_view(request):
         if user:
             login(request, user)
             messages.success(request, 'Logged in successfully')
-            return redirect('userhome')
+            return redirect('quizhome')
         else:
             messages.error(request, 'Logged in Fail')
-    return render(request, 'users/signin.html')
+    return render(request, 'users/log_full.html')
 
 def signup_user(request):
     """Funkcja tworząca widok obsługujący formularz rejestracji."""
     if request.method == 'POST':
         if not User.objects.filter(username=request.POST["username"]).exists():
-            user = User.objects.create_user(username=request.POST["username"],
-                                            password=request.POST["password"],)
-            messages.success(request, 'Signed up successfully')
-            return redirect('userhome')
+            if request.POST["password"] == request.POST["password2"]:
+                user = User.objects.create_user(username=request.POST["username"],
+                                                password=request.POST["password"],)
+                messages.success(request, 'Signed up successfully')
+                return redirect('quizhome')
+            else:
+                messages.error(request, 'Sing up Fail, Password do not match')
         else:
             messages.error(request, 'Sing up Fail, User already exists')
-    return render(request, 'users/signup.html')
+    return render(request, 'users/reg_full.html')
 
 def join_quiz(request):
     return render(request, 'users/joinquiz.html')

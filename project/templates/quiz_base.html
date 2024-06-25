@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Strona edukacyjna z quizami i informacjami.">
+    <meta name="keywords" content="edukacja, quizy, nauka, imigrant">
+    <meta name="author" content="Imigrant na tratwie">
+    <title>Imigrant na tratwie</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="rzapka.png" alt="imigrant">
+        </div>
+        <div class="login">
+            <span id="username-display">Witaj, Użytkowniku!</span>
+            <a href="#" id="logout-link">Wyloguj się</a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="login_panel.html">Główna</a></li>
+            <li><a href="login_quizy.html">Quizy</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer id="footer">
+        <p>&copy; 2024 Imigrant na tratwie. Wszelkie prawa zastrzeżone.</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.twitter.com/" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </div>
+    </footer>
+    <script src="js/login.js"></script>
+</body>
+</html>
