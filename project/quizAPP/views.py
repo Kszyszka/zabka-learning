@@ -65,9 +65,18 @@ def create_quiz(request):
     return render(request, 'quiz/login_createquiz.html')
 
 def quiz_list(request):
+    quizzes = Quiz.objects.all()  # Replace Quiz with your actual Quiz model - to be added once
+    logger.info('------------------renderuje quizlist')
+    context = {'quizzes': quizzes}
+    return render(request, 'quiz/login_quizy.html', context)
+
+#def quiz_listv2(request):
+    #quizzes = Quiz.objects.all()
+    #context = {'quizzes': quizzes}
+
     #quizzes = Quiz.objects.all()  # Replace Quiz with your actual Quiz model - to be added once
-    logger.info('------------------renderuje quizlist') 
-    return render(request, 'quiz/login_quizy.html')
+    #logger.info('------------------renderuje quizlist') 
+    #return render(request, 'quiz/quizlist.html', context)
 
 def question_list(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
