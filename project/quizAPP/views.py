@@ -25,11 +25,13 @@ def create_quiz(request):
             data = json.loads(request.body)
             quiz_title = data.get('quizName')
             questions = data.get('questions')
+            quiz_desc = data.get('quizDescription')
             
             # Create the Quiz
             quiz = Quiz.objects.create(
                 title=quiz_title,
-                created_by=request.user
+                created_by=request.user,
+                description=quiz_desc
             )
             
             # Add Questions to Quiz
@@ -63,9 +65,18 @@ def create_quiz(request):
     return render(request, 'quiz/login_createquiz.html')
 
 def quiz_list(request):
+    quizzes = Quiz.objects.all()  # Replace Quiz with your actual Quiz model - to be added once
+    logger.info('------------------renderuje quizlist')
+    context = {'quizzes': quizzes}
+    return render(request, 'quiz/login_quizy.html', context)
+
+#def quiz_listv2(request):
+    #quizzes = Quiz.objects.all()
+    #context = {'quizzes': quizzes}
+
     #quizzes = Quiz.objects.all()  # Replace Quiz with your actual Quiz model - to be added once
-    logger.info('------------------renderuje quizlist') 
-    return render(request, 'quiz/login_quizy.html')
+    #logger.info('------------------renderuje quizlist') 
+    #return render(request, 'quiz/quizlist.html', context)
 
 def question_list(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)

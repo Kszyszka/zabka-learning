@@ -7,4 +7,3 @@ urlpatterns = [
     path('quizlist/', views.quiz_list, name='quizlist'),
     path('quizzes/<int:quiz_id>/', views.question_list, name='questionlist')
 ]
-

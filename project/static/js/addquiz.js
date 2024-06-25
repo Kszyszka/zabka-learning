@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addQuestionBtn = document.getElementById('add-question-btn');
     const submitQuizBtn = document.getElementById('submit-quiz-btn');
     const quizNameInput = document.getElementById('quiz-name');
+    const quizDescriptionInput = document.getElementById('quiz-description')
     const questionsList = document.getElementById('questions-list');
 
     let questions = [];
@@ -32,12 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     submitQuizBtn.addEventListener('click', function () {
         const quizName = quizNameInput.value;
+        let quizDescription = quizDescriptionInput.value;
+
+        if (quizDescription.length == 0) {
+            quizDescription = 'Nie dodano opisu.';
+        }
 
         if (quizName && questions.length > 0) {
             const formData = {
                 quizName,
-                questions  // This line was modified to match the expected structure
+                questions,  // This line was modified to match the expected structure
+                quizDescription
             };
+        
 
             fetch('/quiz/create/', {
                 method: 'POST',
