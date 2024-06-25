@@ -1,9 +1,10 @@
 {% extends "home_base.html" %}
+{% load static %}
 {% block content %}
 <div class="content-wrapper container">
     <div class="row">
         <div class="col-md-6">
-            <img src="img/madrazaba.jpg" alt="Opis obrazka" class="img-fluid description-image">
+            <img src="{% static 'img/madrazaba.jpg' %}" alt="Opis obrazka" class="img-fluid description-image">
         </div>
         <div class="col-md-6 description-box">
             <h1>Normalnie rzaba</h1>
