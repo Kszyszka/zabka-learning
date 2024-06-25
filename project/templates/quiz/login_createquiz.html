@@ -19,7 +19,7 @@
     </header>
     <nav>
         <ul>
-            <li><a href="{% url 'quizhome' %}">Główna</a></li>
+            <li><a href="{% url 'home' %}">Główna</a></li>
             <li><a href="{% url 'quizlist' %}">Quizy</a></li>
         </ul>
     </nav>
@@ -32,8 +32,8 @@
                     <input type="text" id="quiz-name" placeholder="Wpisz nazwę quizu">
                 </div>
                 <div class="form-group">
-                    <label for="quiz-desc">Opis</label>
-                    <input type="text" id="quiz-desc" placeholder="Wpisz opis quizu">
+                    <label for="quiz-description">Opis quizu</label>
+                    <input type="text" id="quiz-description" placeholder="Wpisz opis quizu">
                 </div>
                 <form id="create-quiz-form">
                     <div class="form-group">
