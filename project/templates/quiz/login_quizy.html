@@ -57,10 +57,11 @@
                 </div>
                     {% block content %}
                         <h3>Lista quizów</h3>
-                        {% if quizlist %}
-                            {% for i in quizlist %}
-                                <div>
-                                    <p>{{ i.title }}</p>
+                        {% if quizzes %}
+                            {% for i in quizzes %}
+                                <div class="quiz-option" style="width: 40%">
+                                    <h3><b>{{ i.title }}</b></h3>
+                                    <p>{{ i.description }}</p>
                                 </div>
                             {% endfor %}
                         {% else %}
