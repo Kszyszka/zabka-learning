@@ -58,17 +58,19 @@
                     </div>
                 </div>
                     {% block content %}
-                        <h3>Lista quizów</h3>
-                        {% if quizzes %}
-                            {% for i in quizzes %}
+                        <h3>Moje quizy</h3>
+                        {% if quizzes%}
+                            {% for quiz in quizzes %}
+                                {% if quiz.created_by == request.user%}
                                 <div class="quiz-option" style="width: 40%">
-                                    <h3><b>{{ i.title }}</b></h3>
-                                    <p>{{ i.description }}</p>
+                                    <h3><b>{{ quiz.title }}</b></h3>
+                                    <p>{{ quiz.description }}</p>
                                 </div>
                                 <a href="/quiz/quizzes/{{ i.id }}" target="_blank"><div class="quiz-option" style="width: 40%;">
-                                    <h3><b>{{ i.title }}</b></h3>
-                                    <p>{{ i.description }}</p>
+                                    <h3><b>{{ quiz.title }}</b></h3>
+                                    <p>{{ quiz.description }}</p>
                                 </div></a>
+                                {% endif %}
                             {% endfor %}
                         {% else %}
                             <p>Nie ma dostępnych żadnych quizów.</p>
