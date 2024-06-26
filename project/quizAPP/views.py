@@ -70,9 +70,6 @@ def quiz_list(request):
 
     current_user = request.user
 
-    
-    
-
     logger.info('------------------renderuje quizlist')
     return render(request, 'quiz/login_quizy.html', context)
 

@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 questions,  // This line was modified to match the expected structure
                 quizDescription
             };
-        
-
+    
             fetch('/quiz/create/', {
                 method: 'POST',
                 headers: {
@@ -57,14 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(response => {
                 if (response.ok) {
+                    alert('Quiz został dodany do bazy danych.');
+                    window.location.href = '../quizlist';  //hardcoduje to mam dosyć
                     return response.json();
                 } else {
                     throw new Error('Failed to add quiz.');
                 }
-            })
-            .then(data => {
-                alert('Quiz został dodany do bazy danych.');
-                // Optionally, clear form fields or perform other actions
             })
             .catch(error => {
                 console.error('Error:',error);
