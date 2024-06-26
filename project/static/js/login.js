@@ -64,11 +64,6 @@ function showSlides() {
     setTimeout(showSlides, 3000); // ustawic mozna inny czas 
 }
 
-function continueQuiz() {
-    alert('Kontynuowanie quizu...');
-    
-}
-
 function startNewQuiz() {
     alert('Rozpoczynanie nowego quizu...');
     

@@ -71,16 +71,19 @@
                     <h3>Dodane pytania:</h3>
                     <ul id="questions-list"></ul>
                 </div>
-                <button id="submit-quiz-btn">Dodaj quiz do bazy</button>
+                <a href="{% url 'quizlist' %}">
+                    <button id="submit-quiz-btn">Dodaj quiz do bazy</button>
+                </a>
+                
             </div>
         </section>
     </main>
     <footer id="footer">
-        <p>&copy; 2024 Imigrant na tratwie. All rights reserved.</p>
+        <p>&copy; 2024. All rights reserved.</p>
         <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://x.com">Twitter</a>
+            <a href="https://www.instagram.com/">Instagram</a>
         </div>
     </footer>
     <script src="{% static 'js/addquiz.js' %}"></script>

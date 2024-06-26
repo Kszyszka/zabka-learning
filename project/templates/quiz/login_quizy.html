@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strona edukacyjna z quizami i informacjami.">
     <meta name="keywords" content="edukacja, quizy, nauka, imigrant">
-    <meta name="author" content="Imigrant na tratwie">
-    <title>Quizy - Imigrant na tratwie</title>
+    <meta name="author" content="DSW Studenty">
+    <title>Quizy</title>
     <link rel="stylesheet" href="{% static 'css/login_quizy.css' %}">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="{% static 'images/rzapka.png' %}" alt="imigrant">
+            <img src="{% static 'images/rzapka.png' %}" alt="noimg">
         </div>
         <div class="login">
             <span id="username-display">Witaj, Użytkowniku!</span>
@@ -32,7 +32,9 @@
             <p>Nasze quizy zostały zaprojektowane tak, aby zapewnić najlepsze doświadczenia edukacyjne. Korzystając z różnych formatów pytań i natychmiastowej informacji zwrotnej, nasze quizy pomagają skutecznie przyswajać wiedzę. Niezależnie od tego, czy kontynuujesz quiz, czy rozpoczynasz nowy, nasze podejście jest angażujące i edukacyjne.</p>
             <div class="quiz-options">
                 <div class="quiz-option">
-                    <button onclick="continueQuiz()">Kontynuuj Quiz</button>
+                    <a href="{% url 'quizwizard' %}">
+                        <button>Stwórz Nowy Quiz</button>
+                    </a>
                 </div>
                 <div class="quiz-option">
                     <button onclick="startNewQuiz()">Rozpocznij Nowy Quiz</button>
@@ -59,17 +61,14 @@
                         <h3>Lista quizów</h3>
                         {% if quizzes %}
                             {% for i in quizzes %}
-<<<<<<< HEAD
                                 <div class="quiz-option" style="width: 40%">
                                     <h3><b>{{ i.title }}</b></h3>
                                     <p>{{ i.description }}</p>
                                 </div>
-=======
                                 <a href="/quiz/quizzes/{{ i.id }}" target="_blank"><div class="quiz-option" style="width: 40%;">
                                     <h3><b>{{ i.title }}</b></h3>
                                     <p>{{ i.description }}</p>
                                 </div></a>
->>>>>>> origin
                             {% endfor %}
                         {% else %}
                             <p>Nie ma dostępnych żadnych quizów.</p>
