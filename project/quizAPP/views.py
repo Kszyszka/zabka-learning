@@ -65,9 +65,15 @@ def create_quiz(request):
     return render(request, 'quiz/login_createquiz.html')
 
 def quiz_list(request):
-    quizzes = Quiz.objects.all()  # Replace Quiz with your actual Quiz model - to be added once
-    logger.info('------------------renderuje quizlist')
+    quizzes = Quiz.objects.all()
     context = {'quizzes': quizzes}
+
+    current_user = request.user
+
+    
+    
+
+    logger.info('------------------renderuje quizlist')
     return render(request, 'quiz/login_quizy.html', context)
 
 #def quiz_listv2(request):
