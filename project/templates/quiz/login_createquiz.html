@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imigrant na tratwie</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="rzapka.png" alt="imigrant">
+            <img src="{% static 'images/rzapka.png' %}" alt="imigrant">
         </div>
         <div class="login">
             <span id="username-display">Witaj, Użytkowniku!</span>
@@ -18,9 +19,8 @@
     </header>
     <nav>
         <ul>
-            <li><a href="login_panel.html">Główna</a></li>
-            <li><a href="login_quizy.html">Quizy</a></li>
-    
+            <li><a href="{% url 'quizhome' %}">Główna</a></li>
+            <li><a href="{% url 'quizlist' %}">Quizy</a></li>
         </ul>
     </nav>
     <main>
@@ -30,6 +30,10 @@
                 <div class="form-group">
                     <label for="quiz-name">Nazwa quizu</label>
                     <input type="text" id="quiz-name" placeholder="Wpisz nazwę quizu">
+                </div>
+                <div class="form-group">
+                    <label for="quiz-description">Opis quizu</label>
+                    <input type="text" id="quiz-description" placeholder="Wpisz opis quizu">
                 </div>
                 <form id="create-quiz-form">
                     <div class="form-group">
@@ -55,10 +59,10 @@
                     <div class="form-group">
                         <label for="correct-answer">Poprawna odpowiedź</label>
                         <select id="correct-answer">
-                            <option value="answer1">Odpowiedź 1</option>
-                            <option value="answer2">Odpowiedź 2</option>
-                            <option value="answer3">Odpowiedź 3</option>
-                            <option value="answer4">Odpowiedź 4</option>
+                            <option value="1">Odpowiedź 1</option>
+                            <option value="2">Odpowiedź 2</option>
+                            <option value="3">Odpowiedź 3</option>
+                            <option value="4">Odpowiedź 4</option>
                         </select>
                     </div>
                     <button type="button" id="add-question-btn">Dodaj pytanie</button>
@@ -79,6 +83,6 @@
             <a href="#">Instagram</a>
         </div>
     </footer>
-    <script src="js/addquiz.js"></script>
+    <script src="{% static 'js/addquiz.js' %}"></script>
 </body>
 </html>

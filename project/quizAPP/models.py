@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Quiz(models.Model):
+    #identifier = models.CharField(max_length=20)    #instead of ID, bcs its a builtin keyword
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name='quizzes')
