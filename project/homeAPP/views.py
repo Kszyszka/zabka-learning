@@ -15,3 +15,4 @@ def terms(request):
 
 def contact(request):
     return render(request, "home/contact.html")
+

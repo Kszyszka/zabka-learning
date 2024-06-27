@@ -1,15 +1,67 @@
-{% extends "home_base.html" %}
 {% load static %}
-{% block content %}
-<div class="content-wrapper container">
-    <div class="row">
-        <div class="col-md-6">
-            <img src="{% static 'img/madrazaba.jpg' %}" alt="Opis obrazka" class="img-fluid description-image">
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Czym jest Qmaj Rzabe?</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+</head>
+<body>
+    <header class="w-100">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/logo.png' %}" class="img-fluid" style="max-width: 50px;" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'mainpage' %}">Strona Główna</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'aboutus' %}">Czym jest Qmaj Rzabe?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'terms' %}">Regulamin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Kontakt</a></li>
+                </ul>
+                <ul class="navbar-nav position-relative">
+                    <li class="nav-item">
+                        <a id="button" class="nav-link btn btn-success text-white" href="{% url 'join' %}">Dołącz do nas!</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
+        <div class="content-wrapper container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{% static 'img/madrazaba.jpg' %}" alt="Opis obrazka" class="img-fluid description-image">
+                </div>
+                <div class="col-md-6 description-box">
+                    <h1>Normalnie rzaba</h1>
+                    <p>"Kumaj z Żabą" to innowacyjna aplikacja do nauki języka angielskiego, która sprawi, że nauka stanie się przyjemna, interaktywna i efektywna. Nasza aplikacja jest przeznaczona zarówno dla początkujących, jak i zaawansowanych użytkowników, oferując kompleksowy kurs języka angielskiego.</p>
+
+                    <h3>Kluczowe Funkcje</h3>
+                    <p><strong>Interaktywne Lekcje:</strong> Dzięki naszym interaktywnym lekcjom, użytkownicy mogą uczyć się poprzez zabawę. Ćwiczenia w formie gier, quizów i dialogów pomagają w przyswajaniu nowego słownictwa i gramatyki.</p>
+                    <p><strong>Zabawa z Żabą:</strong> Nasza maskotka, sympatyczna żaba, prowadzi użytkowników przez kolejne etapy nauki, motywując ich do osiągania coraz lepszych wyników.</p>
+                    <p><strong>Personalizowany Plan Nauki:</strong> Aplikacja dostosowuje plan nauki do indywidualnych potrzeb użytkownika, analizując jego postępy i proponując lekcje, które pomogą w osiągnięciu zamierzonych celów.</p>
+                    <p><strong>Wyzwania i Nagrody:</strong> System osiągnięć i nagród motywuje użytkowników do regularnej nauki. Za każdą ukończoną lekcję i quiz użytkownicy zdobywają punkty, odznaki i nagrody.</p>
+                    <p><strong>Tryb Offline:</strong> Nauka bez dostępu do internetu? Żaden problem! Dzięki trybowi offline możesz uczyć się języka angielskiego w dowolnym miejscu i czasie.</p>
+
+                    <h3>Dlaczego Warto Wybrać "Kumaj z Żabą"?</h3>
+                    <p><strong>Efektywność:</strong> Nasze metody nauczania są oparte na badaniach naukowych i sprawdzonych technikach, które zapewniają szybsze i bardziej efektywne przyswajanie języka angielskiego.</p>
+                    <p><strong>Dostępność:</strong> Aplikacja jest dostępna na wszystkie popularne platformy: Android, iOS oraz wersja webowa, dzięki czemu możesz uczyć się, gdziekolwiek jesteś.</p>
+                    <p><strong>Wsparcie Społeczności:</strong> Dołącz do naszej społeczności użytkowników, dziel się swoimi postępami, bierz udział w wyzwaniach grupowych i zdobywaj nowe znajomości z całego świata.</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 description-box">
-            <h1>Normalnie rzaba</h1>
-            <p>Rzaba se zdała programowanie i cziluje bombe w czapce essa</p>
-        </div>
-    </div>
-</div>
-{% endblock %}
+    </main>
+    <footer class="bg-dark text-white text-center py-3 mt-auto w-100">
+        <p>&copy; 2024 Fun Learning. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
