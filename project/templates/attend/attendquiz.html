@@ -5,7 +5,7 @@
 {% block content %}
   <h2>Quiz: {{ quiz.title }}</h2>
   <i>{{ quiz.description }}</i>
-  <form action="" method="post">
+  <form action="{% url 'results' %}" method="post">
     {% for question in quiz.questions.all %}
         <strong>Pytanie: {{ question.question_text }}</strong>
         <label for="answer1">{{ question.answer1 }}</label>
