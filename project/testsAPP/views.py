@@ -12,5 +12,4 @@ def attend(request):
 
 def attend_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
-
     return render(request, 'attend/attendquiz.html', {'quiz': quiz})
