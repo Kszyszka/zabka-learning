@@ -3,19 +3,22 @@
 {% block title %}Questions for {{ quiz.title }}{% endblock %}
 
 {% block content %}
-  <h2>Pytania dla: {{ quiz.title }}</h2>
-  <ul>
+  <h2>Quiz: {{ quiz.title }}</h2>
+  <i>{{ quiz.description }}</i>
+  <form action="" method="post">
     {% for question in quiz.questions.all %}
-      <li>
-        <strong>{{ question.question_text }}</strong><br>
-        1. {{ question.answer1 }}<br>
-        2. {{ question.answer2 }}<br>
-        3. {{ question.answer3 }}<br>
-        4. {{ question.answer4 }}<br>
-        <em>Poprawna odpowiedź: {{ question.correct_answer }}</em>
-      </li>
+        <strong>Pytanie: {{ question.question_text }}</strong>
+        <label for="answer1">{{ question.answer1 }}</label>
+        <input type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <label for="answer2">{{ question.answer2 }}</label>
+        <input type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <label for="answer3">{{ question.answer3 }}</label>
+        <input type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <label for="answer4">{{ question.answer4 }}</label>
+        <input type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="test">
     {% endfor %}
-  </ul>
+    <input type="submit" value="Prześlij odpowiedzi">
+    </form>
 
   {% for message in messages %}
       <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
