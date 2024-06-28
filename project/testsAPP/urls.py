@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path("", views.attend, name='attend'),
-    path('attend/<int:quiz_id>/', views.attend_quiz, name='attend_quiz')
+    path('aquiz', views.attend_quiz, name='attend_quiz')
 ]
