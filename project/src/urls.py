@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include("homeAPP.urls")),
     path('admin/', admin.site.urls),
     path('user/', include("usersAPP.urls")),
-    path("quiz/", include("quizAPP.urls"))
+    path("quiz/", include("quizAPP.urls")),
+    path("attend/", include("testsAPP.urls"))
 ]
