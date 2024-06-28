@@ -37,7 +37,10 @@
                     </a>
                 </div>
                 <div class="quiz-option">
-                    <button onclick="startNewQuiz()">Rozpocznij Nowy Quiz</button>
+                    <a href="{% url 'testlist' %}">
+                        <button>Rozpocznij Nowy Quiz</button>
+                    </a>
+                   
                 </div>
             </div>
             <div class="progress">
@@ -76,7 +79,7 @@
         </section>
     </main>
     <footer id="footer">
-        <p>&copy; 2024 Imigrant na tratwie. Wszelkie prawa zastrzeżone.</p>
+        <p>&copy; 2024. Wszelkie prawa zastrzeżone.</p>
         <div class="social-media">
         </div>
     </footer>
