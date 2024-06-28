@@ -12,16 +12,15 @@ def attend_quiz(request, quiz_id):
 def results(request):
     if request.method == 'POST':
         try:
-            questions = request.POST
+            dbquestions = Question.objects.all()    #read from DB 
+            questions = request.POST    #read from form (via POST)
             for q in questions:
-                logger.error(f'-----------{q}')
-                logger.error(f'-------------{questions[q]}')
-                #for d in q:
-                    #logger.error(f'-------------{d}')                
-                #logger.error(f'-----------{questions[question]}')
-                #logger.error(f'-----------{questions[question]['test']}')
+                q_id = q[8::] # "question" is an 8 letter word - skip those 8 letters :)
+                ans_given = questions[q]
 
-            pass        
+                logger.error(f'-----------{q_id}')
+                logger.error(f'-------------{questions[q]}')
+     
         except Exception as e:
             logger.error(f'-----------Rzucam exception: {e}')
             return redirect('../../quiz/quizlist')
