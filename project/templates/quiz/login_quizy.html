@@ -15,28 +15,12 @@
             <button onclick="startNewQuiz()">Rozpocznij Nowy Quiz</button>
         </div>
     </div>
-    <div class="progress">
-        <h3>Ukończone quizy</h3>
-        <p>Quiz 1: 80%</p>
-        <div class="progress-bar">
-            <div class="progress-bar-inner" style="width: 80%;"></div>
-        </div>
-        <p>Quiz 2: 60%</p>
-        <div class="progress-bar">
-            <div class="progress-bar-inner" style="width: 60%;"></div>
-        </div>
-        <h3>Mój postęp</h3>
-        <div class="overall-progress">
-            <p>Średni postęp: 70%</p>
-            <div class="progress-bar">
-                <div class="progress-bar-inner" style="width: 70%;"></div>
-            </div>
-        </div>
+    <div class="moje-quizy">
         <h3>Moje quizy</h3>
         {% if quizzes%}
             {% for quiz in quizzes %}
                 {% if quiz.created_by == request.user%}
-                <a href="/quiz/quizzes/{{ quiz.id }}"><div class="quiz-option" style="width: 40%;">
+                <a href="/quiz/quizzes/{{ quiz.id }}"><div class="quiz-option" style="width: 33%;">
                     <h3><b>{{ quiz.title }}</b></h3>
                     <p>{{ quiz.description }}</p>
                 </div></a>

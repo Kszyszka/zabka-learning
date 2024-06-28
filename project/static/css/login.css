@@ -175,3 +175,11 @@ footer .social-media a {
 footer .social-media a:hover {
     color: #4CAF50;
 }
+
+#quizy {
+    height: auto;
+}
+
+.progress{
+    height: 1000px;
+}

@@ -3,21 +3,29 @@
 {% block title %}Questions for {{ quiz.title }}{% endblock %}
 
 {% block content %}
-  <h2>Pytania dla: {{ quiz.title }}</h2>
-  <ul>
-    {% for question in quiz.questions.all %}
-      <li>
-        <strong>{{ question.question_text }}</strong><br>
-        1. {{ question.answer1 }}<br>
-        2. {{ question.answer2 }}<br>
-        3. {{ question.answer3 }}<br>
-        4. {{ question.answer4 }}<br>
-        <em>Poprawna odpowiedź: {{ question.correct_answer }}</em>
-      </li>
-    {% endfor %}
-  </ul>
+<div class="background">
+  <div class="container mt-4">
+    <h2 class="mb-4">Pytania dla: {{ quiz.title }}</h2>
+    <ul class="list-group mb-4">
+      {% for question in quiz.questions.all %}
+        <li class="list-group-item">
+          <strong>{{ question.question_text }}</strong><br>
+          <ol class="list-group list-group-numbered">
+            <li class="list-group-item">1. {{ question.answer1 }}</li>
+            <li class="list-group-item">2. {{ question.answer2 }}</li>
+            <li class="list-group-item">3. {{ question.answer3 }}</li>
+            <li class="list-group-item">4. {{ question.answer4 }}</li>
+          </ol>
+          <em class="text-muted">Poprawna odpowiedź: {{ question.correct_answer }}</em>
+        </li>
+      {% empty %}
+        <li class="list-group-item">Brak pytań do wyświetlenia.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
-  {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-  {% endfor %}
+{% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+{% endfor %}
 {% endblock %}

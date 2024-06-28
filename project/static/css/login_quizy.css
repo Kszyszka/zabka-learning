@@ -100,7 +100,6 @@ footer {
     text-align: center;
     padding: 1em;
     position: fixed;
-    bottom: -100px; /* Hidden initially */
     width: 100%;
     transition: bottom 0.3s;
 }
