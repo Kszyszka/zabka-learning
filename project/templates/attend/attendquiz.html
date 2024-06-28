@@ -6,16 +6,17 @@
   <h2>Quiz: {{ quiz.title }}</h2>
   <i>{{ quiz.description }}</i>
   <form action="{% url 'results' %}" method="post">
+    {% csrf_token %}
     {% for question in quiz.questions.all %}
         <strong>Pytanie: {{ question.question_text }}</strong>
         <label for="answer1">{{ question.answer1 }}</label>
-        <input type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <input type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">
         <label for="answer2">{{ question.answer2 }}</label>
-        <input type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <input type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">
         <label for="answer3">{{ question.answer3 }}</label>
-        <input type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <input type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="3">
         <label for="answer4">{{ question.answer4 }}</label>
-        <input type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="test">
+        <input type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="4">
     {% endfor %}
     <input type="submit" value="Prześlij odpowiedzi">
     </form>
