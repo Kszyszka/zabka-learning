@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz List{% endblock %}
+
+{% block content %}
+</div>
+    <h3>Moje quizy</h3>
+    {% if quizzes %}
+        {% for quiz in quizzes %}
+          <a href="/tests/quizzes/{{ quiz.id }}" target="_blank"><div class="quiz-option" style="width: 40%;">
+              <h3><b>{{ quiz.title }}</b></h3>
+              <p>{{ quiz.description }}</p>
+          </div></a>
+        {% endfor %}
+    {% else %}
+        <p>Nie ma dostępnych żadnych quizów.</p>
+    {% endif %}
+</div>
+{% endblock %}
