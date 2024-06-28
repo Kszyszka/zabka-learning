@@ -7,12 +7,13 @@
   <i>{{ quiz.description }}</i>
   <form action="{% url 'results' %}" method="post">
     {% csrf_token %}
+    <input type="hidden" name="quizid" value="{{ quiz.id }}">
     {% for question in quiz.questions.all %}
         <strong>Pytanie: {{ question.question_text }}</strong>
         <label for="answer1">{{ question.answer1 }}</label>
-        <input type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">
+        <input type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">  <!-- NIE MODYFIKOWAĆ NAME BO ZEPSUJE SIE DODAWANIE TESTÓW DO DB.-->
         <label for="answer2">{{ question.answer2 }}</label>
-        <input type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">
+        <input type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">  <!--           NIE PYTAJCIE DLACZEGO. - Elian                   -->
         <label for="answer3">{{ question.answer3 }}</label>
         <input type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="3">
         <label for="answer4">{{ question.answer4 }}</label>
