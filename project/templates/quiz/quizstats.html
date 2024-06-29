@@ -7,10 +7,28 @@
     <h3>Statystyki Twoich Quizów</h3>
     {% if quizzes %}
         {% for quiz in quizzes %}
-          <a href="/attend/{{ quiz.id }}"><div class="quiz-option" style="width: 40%;">
+          <div class="quiz-option" style="width: 60%;">
               <h3><b>{{ quiz.title }}</b></h3>
               <p>{{ quiz.description }}</p>
-          </div></a>
+          </div>
+            {% for key,value in tests.items %}
+                {% if key == quiz.id and value %}
+                    {% for attempt in value %}
+                    <div style="width: 20%;">
+                        <h3><b></b></h3>
+                        <p> Quiz probowal robic: {{attempt.taken_by}}</p>
+                        <p> Klucz odpowiedzi - prawidłowy: {{ attempt.correct_key }}</p>
+                        <p> Odpowiedzi użytkownika       : {{ attempt.given_key }}</p>
+                        <p> Wynik punktowy: {{attempt.score_out_of }}</p>
+                        <p> Wynik %: {{ attempt.score_percent }}</p>
+                        <p> Zdał? {{attempt.passed}}</p>
+                        <p>-----------------------------------------------------</p>
+
+                    </div>
+                    {% endfor %}
+                {% endif %}  
+            {% endfor %}
+
         {% endfor %}
     {% else %}
         <p>Nie ma dostępnych żadnych quizów.</p>
