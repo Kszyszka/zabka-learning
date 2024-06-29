@@ -61,7 +61,7 @@ def create_quiz(request):
         except Exception as e:
             logger.error(f'-----------------------------------------EXCEPTION Error creating quiz: {str(e)}')
             messages.error(request, 'Wystąpił błąd podczas dodawania quizu.')
-            return redirect('home')  # Redirect to home or another view upon error
+            return redirect('quizlist')  # Redirect to home or another view upon error
     
     logger.info('------------------renderuje createquiz') 
     return render(request, 'quiz/login_createquiz.html')
