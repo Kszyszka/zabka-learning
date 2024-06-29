@@ -24,6 +24,9 @@ def signup_user(request):
             if request.POST["password"] == request.POST["password2"]:
                 user = User.objects.create_user(username=request.POST["username"],
                                                 password=request.POST["password"],)
+                user = authenticate(request, username=request.POST["username"],
+                                    password=request.POST["password"])
+                login(request, user)
                 messages.success(request, 'Signed up successfully')
                 return redirect('quizlist')
             else:
