@@ -17,7 +17,7 @@ def login_view(request):
             messages.success(request, 'Logged in successfully')
             return redirect('quizhome')
         else:
-            messages.error(request, 'Logged in Fail')
+            messages.error(request, 'Failed to log in')
     return render(request, 'users/log_full.html')
 
 def signup_user(request):
@@ -30,9 +30,9 @@ def signup_user(request):
                 messages.success(request, 'Signed up successfully')
                 return redirect('quizhome')
             else:
-                messages.error(request, 'Sing up Fail, Password do not match')
+                messages.error(request, 'Sign up Failed, Passwords do not match')
         else:
-            messages.error(request, 'Sing up Fail, User already exists')
+            messages.error(request, 'Sign up Failed, User already exists')
     return render(request, 'users/reg_full.html')
 
 def join_quiz(request):

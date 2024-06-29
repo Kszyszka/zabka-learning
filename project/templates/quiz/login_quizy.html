@@ -14,6 +14,7 @@
         <div class="quiz-option">
             <button onclick="startNewQuiz()">Rozpocznij Nowy Quiz</button>
         </div>
+<<<<<<< HEAD
     </div>
     <div class="moje-quizy">
         <h3>Moje quizy</h3>
@@ -32,3 +33,72 @@
     </div>
 </section>
 {% endblock %}
+=======
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'quizhome' %}">Główna</a></li>
+            <li><a href="{% url 'quizlist' %}">Quizy</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="quizy">
+            <h2>Opcje Quizu</h2>
+            <p>Nasze quizy zostały zaprojektowane tak, aby zapewnić najlepsze doświadczenia edukacyjne. Korzystając z różnych formatów pytań i natychmiastowej informacji zwrotnej, nasze quizy pomagają skutecznie przyswajać wiedzę. Niezależnie od tego, czy kontynuujesz quiz, czy rozpoczynasz nowy, nasze podejście jest angażujące i edukacyjne.</p>
+            <div class="quiz-options">
+                <div class="quiz-option">
+                    <a href="{% url 'quizwizard' %}">
+                        <button>Stwórz Nowy Quiz</button>
+                    </a>
+                </div>
+                <div class="quiz-option">
+                    <a href="{% url 'testlist' %}">
+                        <button>Rozpocznij Nowy Quiz</button>
+                    </a>
+                   
+                </div>
+            </div>
+            <div class="progress">
+                <h3>Ukończone quizy</h3>
+                <p>Quiz 1: 80%</p>
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" style="width: 80%;"></div>
+                </div>
+                <p>Quiz 2: 60%</p>
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" style="width: 60%;"></div>
+                </div>
+                <h3>Mój postęp</h3>
+                <div class="overall-progress">
+                    <p>Średni postęp: 70%</p>
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" style="width: 70%;"></div>
+                    </div>
+                </div>
+                    {% block content %}
+                        <h3>Moje quizy</h3>
+                        {% if quizzes%}
+                            {% for quiz in quizzes %}
+                                {% if quiz.created_by == request.user%}
+                                <a href="/quiz/quizzes/{{ quiz.id }}" target="_blank"><div class="quiz-option" style="width: 40%;">
+                                    <h3><b>{{ quiz.title }}</b></h3>
+                                    <p>{{ quiz.description }}</p>
+                                </div></a>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p>Nie ma dostępnych żadnych quizów.</p>
+                        {% endif %}    
+                    {% endblock %}
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <p>&copy; 2024. Wszelkie prawa zastrzeżone.</p>
+        <div class="social-media">
+        </div>
+    </footer>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>
+>>>>>>> main

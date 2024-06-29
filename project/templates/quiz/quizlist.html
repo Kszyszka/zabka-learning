@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz List{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Quiz List</h2>
+    <div class="row">
+      {% for quiz in quizzes %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'testlist' quiz.id %}">{{ quiz.title }}</a></h5>
+              <p class="card-text">{{ quiz.description }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <ul>
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

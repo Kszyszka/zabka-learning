@@ -84,3 +84,7 @@ def quiz_list(request):
 def question_list(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
     return render(request, 'quiz/questionlist.html', {'quiz': quiz})
+
+def test_list(request):
+    quiz_list = Quiz.objects.all()
+    return render(request,"quiz/testlist.html",{'quizzes': quiz_list})
