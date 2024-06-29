@@ -6,7 +6,8 @@ from quizAPP.models import *
 
 class TestAttempt(models.Model):
 
-    taken_by = models.ForeignKey(User, on_delete=models.PROTECT)
+    taken_by = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, null=True)
+    taken_by_name = models.CharField(max_length=200)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     correct_key = models.CharField(max_length=200)  #this will be a string of corrent answers, for example '14124341312'
     given_key = models.CharField(max_length=200)    #this will be a string of answers given by the user, for example '123141323'
@@ -20,6 +21,7 @@ class TestAttempt(models.Model):
         return (int(got),int(max))
     
     def process(self):
+        
         max = len(list(self.correct_key))
         got = 0
         for i in range(max):
