@@ -109,3 +109,20 @@ footer p {
     }
 }
 
+.quiz-option {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+    
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-option:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Delikatne ściemnienie */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Dodanie cienia dla efektu głębi */
+}
+
