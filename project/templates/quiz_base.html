@@ -17,8 +17,8 @@
                 </a>
             </div>
             <div class="login">
-                <span id="username-display">Witaj, Użytkowniku!</span>
-                <a href="#" id="logout-link">Wyloguj się</a>
+                <span id="username-display">Witaj, {{ user.get_username }}!</span>
+                <a href="{% url 'mainpage' %}" id="logout-link">Wyloguj się</a>
             </div>
         </header>
         <nav>
