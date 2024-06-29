@@ -1,25 +1,31 @@
 {% extends "home_base.html" %}
 {% load static %}
 {% block content %}
-<div class="content-wrapper container">
+<div class="card text-center">
+    <h1>Czym jest <strong>Qumaj Żabę</strong>?</h1>
+</div>
+<img src="{% static 'img/logo.png' %}" class="img-fluid" style="max-width: 200px;" >
+<div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <img src="{% static 'img/madrazaba.jpg' %}" alt="Opis obrazka" class="img-fluid description-image">
+        <div class="col description-box" >
+            <h3><strong>Qumaj Żabę</strong> to platforma do nauki poprzez Quizy tworzone przez Ciebie i społeczność.</h3>
+            <br>
+            <p>Z badań przeprowadzanych przez naukowców wynika, że czytanie informacji i następnie testowanie tej wiedzy w formie quizu jest skutecznym sposobem na utrwalenie poznanych wcześniej informacji.</p>
         </div>
-        <div class="col-md-6 description-box">
-            <h1>Normalnie rzaba</h1>
-            <p>"Kumaj z Żabą" to innowacyjna aplikacja do nauki języka angielskiego, która sprawi, że nauka stanie się przyjemna, interaktywna i efektywna. Nasza aplikacja jest przeznaczona zarówno dla początkujących, jak i zaawansowanych użytkowników, oferując kompleksowy kurs języka angielskiego.</p>
-            <h3>Kluczowe Funkcje</h3>
-            <p><strong>Interaktywne Lekcje:</strong> Dzięki naszym interaktywnym lekcjom, użytkownicy mogą uczyć się poprzez zabawę. Ćwiczenia w formie gier, quizów i dialogów pomagają w przyswajaniu nowego słownictwa i gramatyki.</p>
-            <p><strong>Zabawa z Żabą:</strong> Nasza maskotka, sympatyczna żaba, prowadzi użytkowników przez kolejne etapy nauki, motywując ich do osiągania coraz lepszych wyników.</p>
-            <p><strong>Personalizowany Plan Nauki:</strong> Aplikacja dostosowuje plan nauki do indywidualnych potrzeb użytkownika, analizując jego postępy i proponując lekcje, które pomogą w osiągnięciu zamierzonych celów.</p>
-            <p><strong>Wyzwania i Nagrody:</strong> System osiągnięć i nagród motywuje użytkowników do regularnej nauki. Za każdą ukończoną lekcję i quiz użytkownicy zdobywają punkty, odznaki i nagrody.</p>
-            <p><strong>Tryb Offline:</strong> Nauka bez dostępu do internetu? Żaden problem! Dzięki trybowi offline możesz uczyć się języka angielskiego w dowolnym miejscu i czasie.</p>
-            <h3>Dlaczego Warto Wybrać "Kumaj z Żabą"?</h3>
-            <p><strong>Efektywność:</strong> Nasze metody nauczania są oparte na badaniach naukowych i sprawdzonych technikach, które zapewniają szybsze i bardziej efektywne przyswajanie języka angielskiego.</p>
-            <p><strong>Dostępność:</strong> Aplikacja jest dostępna na wszystkie popularne platformy: Android, iOS oraz wersja webowa, dzięki czemu możesz uczyć się, gdziekolwiek jesteś.</p>
-            <p><strong>Wsparcie Społeczności:</strong> Dołącz do naszej społeczności użytkowników, dziel się swoimi postępami, bierz udział w wyzwaniach grupowych i zdobywaj nowe znajomości z całego świata.</p>
+        <div class="col description-box">
+            <h3><strong>Wraz z sympatyczną Żabą ucz i baw się, poprzez multum przygotowanych Quizów oraz monitoruj swoje postępy.</strong></h3>
         </div>
+        <div class="col description-box">
+            <h3><strong>Zarejestruj się już dziś aby:</strong></h3>
+            <br>
+            <ul>
+                <li>Tworzyć autorskie quizy</li>
+                <li>Monitorować progres rozwiązywanych quizów</li>
+                <li>Być częścią wspaniałej społeczności</li>
+                <li>Dobrze się bawić!</li>
+            </ul>
+        </div>
+        
     </div>
 </div>
 {% endblock %}
