@@ -1,4 +1,5 @@
 import logging
+import array
 import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -6,6 +7,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from .models import Quiz, Question
 from .forms import QuizForm, QuestionForm
+from testsAPP.models import TestAttempt
 
 
 
@@ -94,4 +96,28 @@ def test_list_guest(request):
     return render(request,"quiz/testlistguest.html",{'quizzes': quiz_list})
 
 def stats(request):
-    return render(request, "quiz/quizstats.html",{'quizzes': quiz_list})
+    quiz_list = Quiz.objects.all().filter(created_by = request.user)
+    #logger.error(f'--------------------attempt----{len(quiz_list)}\n')
+
+    attempts = {}
+    attemptcount = 0
+    #x = TestAttempt.objects.all().filter(quiz = quiz_list[0])
+    #logger.error(f'--------------------attempt----{len(x)}\n')
+
+    query = TestAttempt.objects.all().filter(quiz__in = quiz_list)
+
+    for quiz in quiz_list:
+        attempts[quiz.id] = [att for att in query if att.quiz == quiz]
+        logger.error(f'------------WAS ATTEMPTED? VAL OF ATT: {attempts[quiz.id]}')
+       
+        #if not query.exists():
+           #attempts[quiz.id] = []
+        #else:
+            #attempts[quiz.id] = list(query)
+          
+    #logger.error(f'--------------------passed? = {attempts[61][0].taken_by}\n')
+    logger.error(f'--------------------attempts total = {len(attempts)}\n')
+        
+    #logger.error(f'-----------------------------------------LIST OF ALL ATTEMPTS: {attempts}')
+
+    return render(request, "quiz/quizstats.html",{'quizzes': quiz_list, 'tests' : attempts})
