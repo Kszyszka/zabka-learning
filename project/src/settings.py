@@ -145,3 +145,6 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_REDIRECT_URL = 'quizlist'
+LOGOUT_REDIRECT_URL = 'mainpage'
