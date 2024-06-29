@@ -1,6 +1,8 @@
 {% extends "home_base.html" %}
 {% block content %}
 {% load static %}
-<a class="btn btn-success text-white my-2" href="{% url 'signin' %}">LOGOWANIE</a>
-<a class="btn btn-success text-white my-2" href="{% url 'signup' %}">REJESTRACJA</a>
+<div class="info-box">
+    <a class="btn btn-success text-white my-2" href="{% url 'signin' %}">LOGOWANIE</a>
+    <a class="btn btn-success text-white my-2" href="{% url 'signup' %}">REJESTRACJA</a>
+</div>
 {% endblock content %}
