@@ -8,7 +8,7 @@ logger = logging.getLogger('django')
 
 def attend_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
-    return render(request, 'attend/attendquiz.html', {'quiz': quiz})
+    return render(request, 'test/attendquiz.html', {'quiz': quiz})
 
 def results(request):
     if request.method == 'POST':
@@ -43,6 +43,6 @@ def results(request):
 
         except Exception as e:
             logger.error(f'-----------Rzucam exception: {e}')
-            return redirect('../../quiz/quizlist')
+            return redirect('testlist')
 
-    return render(request, 'attend/results.html')
+    return render(request, 'test/results.html')

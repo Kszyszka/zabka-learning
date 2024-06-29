@@ -160,7 +160,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1em;
-    position: relative;
+    position: relative !important;
     bottom: 0;
     width: 100%;
     margin-top: auto;
@@ -182,4 +182,44 @@ footer .social-media a:hover {
 
 .progress{
     height: 1000px;
+}
+.hidden {
+    display: none;
+}
+
+.quiz-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.quiz-option {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+    float: left;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-option:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Delikatne ściemnienie */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Dodanie cienia dla efektu głębi */
+}
+
+.quiz-option button {
+    padding: 20px 40px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+.quiz-option button:hover {
+    background-color: #45a049;
 }
