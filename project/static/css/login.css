@@ -223,3 +223,15 @@ footer .social-media a:hover {
 .quiz-option button:hover {
     background-color: #45a049;
 }
+
+.quiz-stat {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1 solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    flex: 1;
+    margin: 5px;
+    float: left;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
