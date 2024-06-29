@@ -15,7 +15,7 @@ def login_view(request):
         if user:
             login(request, user)
             messages.success(request, 'Logged in successfully')
-            return redirect('quizhome')
+            return redirect('quizlist')
         else:
             messages.error(request, 'Failed to log in')
     return render(request, 'users/log_full.html')
@@ -28,7 +28,7 @@ def signup_user(request):
                 user = User.objects.create_user(username=request.POST["username"],
                                                 password=request.POST["password"],)
                 messages.success(request, 'Signed up successfully')
-                return redirect('quizhome')
+                return redirect('quizlist')
             else:
                 messages.error(request, 'Sign up Failed, Passwords do not match')
         else:
