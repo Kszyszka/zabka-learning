@@ -3,15 +3,19 @@
 {% block title %}Quiz List{% endblock %}
 
 {% block content %}
-</div>
-    <h3>Moje quizy</h3>
+<div>
+    <h3 class="text-center">Moje quizy</h3>
     {% if quizzes %}
-        {% for quiz in quizzes %}
-          <a href="/attend/guest/{{ quiz.id }}"><div class="quiz-option" style="width: 40%;">
-              <h3><b>{{ quiz.title }}</b></h3>
-              <p>{{ quiz.description }}</p>
-          </div></a>
-        {% endfor %}
+        <div class="d-flex flex-wrap justify-content-start gap-3">
+            {% for quiz in quizzes %}
+                <a href="/attend/guest/{{ quiz.id }}" class="text-decoration-none text-center" style="width: 20%;">
+                    <div class="quiz-option p-3 border rounded">
+                        <h3><b>{{ quiz.title }}</b></h3>
+                        <p>{{ quiz.description }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
     {% else %}
         <p>Nie ma dostępnych żadnych quizów.</p>
     {% endif %}
