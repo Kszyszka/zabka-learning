@@ -28,7 +28,11 @@
                 <ul class="navbar-nav">
                     <li class="d-inline-flex gap-2">
                         <a id="button" class="nav-link btn btn-light text-dark mx-2 d-flex justify-content-center" href="{% url 'testlistguest' %}">Przeglądaj Quizy!</a>
-                        <a id="button" class="nav-link btn btn-success text-white mx-2 d-flex justify-content-center" href="{% url 'join' %}">Dołącz do nas!</a>
+                        {% if not user.is_authenticated %}
+                            <a id="button" class="nav-link btn btn-success text-white mx-2 d-flex justify-content-center" href="{% url 'join' %}">Dołącz do nas!</a>
+                        {% else %}
+                            <a id="button" class="nav-link btn btn-success text-white mx-2 d-flex justify-content-center" href="{% url 'quizlist' %}">Panel użytkownika ({{ user.get_username }})</a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
