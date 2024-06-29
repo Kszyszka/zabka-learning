@@ -1,9 +1,10 @@
 {% extends "quiz_base.html" %}
 {% load static %}
+{% block title %}- Panel Użytkownika{{ quiz.title }}{% endblock %}
 {% block content %}
 <section id="quizy">
-    <h2>Opcje Quizu</h2>
-    <p>Nasze quizy zostały zaprojektowane tak, aby zapewnić najlepsze doświadczenia edukacyjne. Korzystając z różnych formatów pytań i natychmiastowej informacji zwrotnej, nasze quizy pomagają skutecznie przyswajać wiedzę. Niezależnie od tego, czy kontynuujesz quiz, czy rozpoczynasz nowy, nasze podejście jest angażujące i edukacyjne.</p>
+    <h3>Opcje Quizu</h3>
+    <p>Nasza platforma została zaprojektowana tak, aby zapewnić jak najlepsze doświadczenia edukacyjne. Korzystając z różnych formatów pytań i natychmiastowej informacji zwrotnej, nasze quizy pomagają skutecznie przyswajać wiedzę. Niezależnie od tego, czy kontynuujesz quiz, czy rozpoczynasz nowy, nasze podejście jest angażujące i edukacyjne.</p>
     <div class="quiz-options">
         <div class="quiz-option">
             <a href="{% url 'quizwizard' %}">

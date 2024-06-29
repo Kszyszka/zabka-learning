@@ -1,13 +1,13 @@
 {% extends "quiz_base.html" %}
 
-{% block title %}Quiz List{% endblock %}
+{% block title %}- Moje Quizy{% endblock %}
 
 {% block content %}
 </div>
     <h3>Moje Quizy</h3>
     <p>
-        Na aktualnej witrynie widoczne są wyłącznie Quizy, których jesteś autorem.
-        Jeśli chcesz podjąć się Quizu, którego nie jesteś autorem, zrób to z poziomu <a href="{% url 'testlistguest' %}">Strony Głównej</a>.
+        Na aktualnej witrynie widoczne są wyłącznie Quizy, których jesteś Autorem.
+        Jeśli chcesz podjąć się Quizu, którego nie jesteś Autorem, zrób to z poziomu <a href="{% url 'testlistguest' %}">Strony Głównej</a>.
     </p>
     {% if quizzes %}
         {% for quiz in quizzes %}
