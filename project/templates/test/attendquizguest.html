@@ -4,50 +4,56 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="text-center">{{ quiz.title }}</h2>
-    <p class="text-muted text-center"><i>{{ quiz.description }}</i></p>
-    <form action="{% url 'results' %}" method="post" class="mt-4">
-        {% if not user.is_authenticated %}
-        <div class="form-group">
-            <label for="username">Podaj swoją nazwę użytkownika:</label>
-            <input type="text" id="username" name="username" class="form-control" style="width: 30%;">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">{{ quiz.title }}</h2>
+            <p class="card-text text-muted text-center"><i>{{ quiz.description }}</i></p>
+            <form action="{% url 'results' %}" method="post" class="mt-4">
+                {% if not user.is_authenticated %}
+                <div class="form-group">
+                    <label for="username">Podaj swoją nazwę użytkownika:</label>
+                    <input type="text" id="username" name="username" class="form-control" style="width: 30%;">
+                </div>
+                {% endif %}
+
+                {% csrf_token %}
+                <input type="hidden" name="quizid" value="{{ quiz.id }}">
+
+                {% for question in quiz.questions.all %}
+                <div class="mb-3">
+                    <strong>Pytanie: {{ question.question_text }}</strong>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">  <!-- NIE MODYFIKOWAĆ NAME BO ZEPSUJE SIE DODAWANIE TESTÓW DO DB.-->
+                        <label class="form-check-label" for="answer1-{{ question.id }}">{{ question.answer1 }}</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">  <!--           NIE PYTAJCIE DLACZEGO. - Elian                   -->
+                        <label class="form-check-label" for="answer2-{{ question.id }}">{{ question.answer2 }}</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="3">  <!-- ZARYZYKUJE I ZAPYTAM ~ KECZUK-->
+                        <label class="form-check-label" for="answer3-{{ question.id }}">{{ question.answer3 }}</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="4">
+                        <label class="form-check-label" for="answer4-{{ question.id }}">{{ question.answer4 }}</label>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Prześlij odpowiedzi</button>
+                </div>
+            </form>
+
+            {% if messages %}
+            <ul class="mt-4">
+                {% for message in messages %}
+                <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        {% endif %}
-        
-        {% csrf_token %}
-        <input type="hidden" name="quizid" value="{{ quiz.id }}">
-        
-        {% for question in quiz.questions.all %}
-        <div class="mb-3">
-            <strong>Pytanie: {{ question.question_text }}</strong>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">  <!-- NIE MODYFIKOWAĆ NAME BO ZEPSUJE SIE DODAWANIE TESTÓW DO DB.-->
-                <label class="form-check-label" for="answer1-{{ question.id }}">{{ question.answer1 }}</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">  <!--           NIE PYTAJCIE DLACZEGO. - Elian                   -->
-                <label class="form-check-label" for="answer2-{{ question.id }}">{{ question.answer2 }}</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="3">  <!-- ZARYZYKUJE I ZAPYTAM ~ KECZUK-->
-                <label class="form-check-label" for="answer3-{{ question.id }}">{{ question.answer3 }}</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="4">
-                <label class="form-check-label" for="answer4-{{ question.id }}">{{ question.answer4 }}</label>
-            </div>
-        </div>
-        {% endfor %}
-        
-        <button type="submit" class="btn btn-primary">Prześlij odpowiedzi</button>
-    </form>
-    
-    {% if messages %}
-    <ul class="mt-4">
-        {% for message in messages %}
-        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    </div>
 </div>
 {% endblock %}
