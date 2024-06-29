@@ -17,22 +17,41 @@
                 </a>
             </div>
             <div class="login">
-                <span id="username-display">Witaj, {{ user.get_username }}!</span>
-                <a href="{% url 'mainpage' %}" id="logout-link">Powrót do Strony Głównej</a> 
-                <a href="{% url 'logout' %}" id="logout-link">Wyloguj się</a>
+                {% if user.is_authenticated %}
+                    <span id="username-display">Witaj, {{ user.get_username }}!</span>
+                    <a href="{% url 'mainpage' %}" id="logout-link">Powrót do Strony Głównej</a>
+                    <a href="{% url 'logout' %}" id="logout-link">Wyloguj się</a>
+                {% else %}
+                    <span id="username-display">Jesteś niezalogowany.</span>
+                    <a href="{% url 'mainpage' %}" id="logout-link">Powrót do Strony Głównej</a>
+                {% endif %}
             </div>
         </header>
         <nav>
             <ul>
-                <li><a href="{% url 'quizlist' %}">Główna</a></li>
-                <li><a href="{% url 'quizwizard' %}">Stwórz Nowy Quiz</a></li>
-                <li><a href="{% url 'testlist' %}">Rozpocznij Nowy Quiz</a></li>
-                <li><a href="{% url 'stats' %}">Statystyki Twoich Quizów</a></li>
-                <li><a href="{% url 'admin:index' %}"><b>Panel Administratora</b></a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'quizlist' %}">Główna</a></li>
+                    <li><a href="{% url 'quizwizard' %}">Stwórz Nowy Quiz</a></li>
+                    <li><a href="{% url 'testlist' %}">Rozpocznij Nowy Quiz</a></li>
+                    <li><a href="{% url 'stats' %}">Statystyki Twoich Quizów</a></li>
+                    <li><a href="{% url 'admin:index' %}"><b>Panel Administratora</b></a></li>
+                {% else %}
+                    <li><a href="{% url 'mainpage' %}">Strona Główna</a></li>
+                {% endif %}
             </ul>
         </nav>
         <main>
-            {% block content %}{% endblock %}
+            {% if user.is_authenticated %}
+                {% block content %}{% endblock %}
+            {% else %}
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <span style="text-align: center"><h2><b>Jesteś niezalogowany.<b></h2></span>
+                    <h4>Panel Użytkownika przeznaczony jest wyłącznie dla autoryzowanych użytkowników, powróć do Strony Głównej.</h4>
+                    <div class="text-center">
+                        <a href="{% url 'mainpage' %}" id="logout-link"><button type="button" class="btn btn-success">Powrót do Strony Głównej</button></a>
+                    </div>
+                </div>
+            {% endif %}
         </main>
         <footer id="footer">
             <p>&copy; 2024 Rzabka Learning. All rights reserved</p>
