@@ -18,7 +18,7 @@
                     {% if key == quiz.id and value %}
                         {% for attempt in value %}
                             <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                                <div class="quiz-stat p-3 border rounded h-100" style="{% if attempt.passed == True %}background-color: #d4edda;{% endif %}">
+                                <div class="quiz-stat p-3 border rounded h-100" style="{% if attempt.passed == True %}background-color: #d4edda;{% elif attempt.passed == False %}background-color: #f8d7da;{% endif %}">
                                     <p>Quiz próbował robić: {{ attempt.taken_by }}</p>
                                     <p>Klucz odpowiedzi - prawidłowy: {{ attempt.correct_key }}</p>
                                     <p>Odpowiedzi użytkownika: {{ attempt.given_key }}</p>
