@@ -2,6 +2,7 @@ import logging
 import re as regex
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import AnonymousUser
 from .models import *
 
 logger = logging.getLogger('django')
@@ -17,6 +18,19 @@ def results(request):
             given,correct = "",""                     # strings for answers to questions
             quiz = get_object_or_404(Quiz, id=request.POST['quizid'])
 
+            #logger.error(f'-----------{questions}')
+            curr_user = request.user
+            taken_by_name = request.user.username
+            #logger.error(f'-----------curruser - {curr_user}')
+
+
+            
+            if curr_user.is_anonymous:
+                curr_user = None
+                taken_by_name = request.POST['username']
+
+            #logger.error(f'-----------curruser: {curr_user}')
+
             for q in questions:
                 if regex.match(r'^question\d+$',q):         # łał nawet regexa wykorzystali ale ambitni studenci mysle ze zasłużyli na 5 :--D
                     logger.error(f'-----------{q}')
@@ -30,10 +44,13 @@ def results(request):
                     given += str(ans_given)
                     correct += str(ans_correct)  
 
-            logger.error(f'-----------klucze: {given} {correct}')       
+            logger.error(f'-----------klucze: {given} {correct}')    
+
+               
                     
             TestAttempt.objects.create(
-                taken_by = request.user,
+                taken_by = curr_user,
+                taken_by_name = taken_by_name,
                 quiz = quiz, #NIE MAM POJECIA JAK TO SPRAWDZIC, BEDE MUSIAL CHYBA WZIAC TO POPRZEZ JEDNO Z PYTAŃ Z QUIZU
                 correct_key = given,
                 given_key = correct,
