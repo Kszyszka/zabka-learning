@@ -3,29 +3,45 @@
 {% block title %}- Rozwiąż Quiz {{ quiz.title }}{% endblock %}
 
 {% block content %}
-  <h2>Quiz: {{ quiz.title }}</h2>
-  <i>{{ quiz.description }}</i>
-  <form action="{% url 'results' %}" method="post">
-    {% if not user.is_authenticated %}
+<div class="container mt-4">
+    <h2 class="text-center">{{ quiz.title }}</h2>
+    <p class="text-muted text-center"><i>{{ quiz.description }}</i></p>
+    <form action="{% url 'results' %}" method="post" class="mt-4">
+        {% if not user.is_authenticated %}
+        <div class="form-group mb-3">
+            <label for="username">Podaj swoją nazwę użytkownika:</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Wpisz swoją nazwę">
+        </div>
+        {% endif %}
 
-    <label for="username">podaj swoja nazwe typie</label>
-    <input type="text" id="username" name="username">
+        {% csrf_token %}
+        <input type="hidden" name="quizid" value="{{ quiz.id }}">
 
-    {% endif %}
+        {% for question in quiz.questions.all %}
+        <div class="mb-3">
+            <strong>Pytanie: {{ question.question_text }}</strong>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">  <!-- NIE MODYFIKOWAĆ NAME BO ZEPSUJE SIE DODAWANIE TESTÓW DO DB.-->
+                <label class="form-check-label" for="answer1-{{ question.id }}">{{ question.answer1 }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">  <!--           NIE PYTAJCIE DLACZEGO. - Elian                   -->
+                <label class="form-check-label" for="answer2-{{ question.id }}">{{ question.answer2 }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="3">
+                <label class="form-check-label" for="answer3-{{ question.id }}">{{ question.answer3 }}</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="4">
+                <label class="form-check-label" for="answer4-{{ question.id }}">{{ question.answer4 }}</label>
+            </div>
+        </div>
+        {% endfor %}
 
-    {% csrf_token %}
-    <input type="hidden" name="quizid" value="{{ quiz.id }}">
-    {% for question in quiz.questions.all %}
-        <strong>Pytanie: {{ question.question_text }}</strong>
-        <label for="answer1">{{ question.answer1 }}</label>
-        <input type="radio" id="answer1-{{ question.id }}" name="question{{ question.id }}" value="1">  <!-- NIE MODYFIKOWAĆ NAME BO ZEPSUJE SIE DODAWANIE TESTÓW DO DB.-->
-        <label for="answer2">{{ question.answer2 }}</label>
-        <input type="radio" id="answer2-{{ question.id }}" name="question{{ question.id }}" value="2">  <!--           NIE PYTAJCIE DLACZEGO. - Elian                   -->
-        <label for="answer3">{{ question.answer3 }}</label>
-        <input type="radio" id="answer3-{{ question.id }}" name="question{{ question.id }}" value="3">
-        <label for="answer4">{{ question.answer4 }}</label>
-        <input type="radio" id="answer4-{{ question.id }}" name="question{{ question.id }}" value="4">
-    {% endfor %}
-    <input type="submit" value="Prześlij odpowiedzi">
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-success">Prześlij odpowiedzi</button>
+        </div>
     </form>
+</div>
 {% endblock %}
