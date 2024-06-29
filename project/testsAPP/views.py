@@ -63,3 +63,7 @@ def results(request):
             return redirect('testlist')
 
     return render(request, 'test/results.html')
+
+def attend_quiz_guest(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id)
+    return render(request, 'test/attendquizguest.html', {'quiz': quiz})

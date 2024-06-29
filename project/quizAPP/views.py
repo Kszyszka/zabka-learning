@@ -88,3 +88,10 @@ def question_list(request, quiz_id):
 def test_list(request):
     quiz_list = Quiz.objects.all()
     return render(request,"quiz/testlist.html",{'quizzes': quiz_list})
+
+def test_list_guest(request):
+    quiz_list = Quiz.objects.all()
+    return render(request,"quiz/testlistguest.html",{'quizzes': quiz_list})
+
+def stats(request):
+    return render(request, "quiz/quizstats.html",{'quizzes': quiz_list})
