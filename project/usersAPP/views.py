@@ -1,13 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 
 # Create your views here.
-def user_home(request):
-    return render(request, 'users/home.html')
-
 def login_view(request):
     if request.method == 'POST':
         user = authenticate(request, username=request.POST["username"],
@@ -35,5 +32,6 @@ def signup_user(request):
             messages.error(request, 'Sign up Failed, User already exists')
     return render(request, 'users/reg_full.html')
 
-def join_quiz(request):
-    return render(request, 'users/joinquiz.html')
+def logout_user(request):
+    logout(request)
+    return redirect('mainpage')
