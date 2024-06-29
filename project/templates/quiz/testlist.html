@@ -4,10 +4,14 @@
 
 {% block content %}
 </div>
-    <h3>Moje quizy</h3>
+    <h3>Moje Quizy</h3>
+    <p>
+        Na aktualnej witrynie widoczne są wyłącznie Quizy, których jesteś autorem.
+        Jeśli chcesz podjąć się Quizu, którego nie jesteś autorem, zrób to z poziomu <a href="{% url 'testlistguest' %}">Strony Głównej</a>.
+    </p>
     {% if quizzes %}
         {% for quiz in quizzes %}
-          <a href="/attend/{{ quiz.id }}"><div class="quiz-option" style="width: 40%;">
+          <a href="/attend/{{ quiz.id }}"><div class="quiz-option" style="width: 30%;">
               <h3><b>{{ quiz.title }}</b></h3>
               <p>{{ quiz.description }}</p>
           </div></a>
