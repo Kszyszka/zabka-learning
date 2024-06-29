@@ -1,9 +1,10 @@
 {% extends "home_base.html" %}
+{% block title %}- Regulamin{{ quiz.title }}{% endblock %}
 {% block content %}
 <div class="container text-center">
     <h2>Regulamin</h2>
     <div class="regulamin-container">
-        <iframe src="static/terms.pdf" frameborder="2" height="500" width="500"></iframe>
+        <iframe src="static/terms.pdf" frameborder="2" height="600px" width="100%"></iframe>
     </div>
 </div>
 {% endblock %}
