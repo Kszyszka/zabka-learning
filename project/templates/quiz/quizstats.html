@@ -3,35 +3,37 @@
 {% block title %}- Statystyki Quizów{% endblock %}
 
 {% block content %}
-</div>
-    <h3>Statystyki Twoich Quizów</h3>
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Statystyki Twoich Quizów</h3>
     {% if quizzes %}
         {% for quiz in quizzes %}
-          <div class="quiz-option" style="width: 60%;">
-              <h3><b>{{ quiz.title }}</b></h3>
-              <p>{{ quiz.description }}</p>
-          </div>
-            {% for key,value in tests.items %}
-                {% if key == quiz.id and value %}
-                    {% for attempt in value %}
-                    <div style="width: 20%;">
-                        <h3><b></b></h3>
-                        <p> Quiz probowal robic: {{attempt.taken_by}}</p>
-                        <p> Klucz odpowiedzi - prawidłowy: {{ attempt.correct_key }}</p>
-                        <p> Odpowiedzi użytkownika       : {{ attempt.given_key }}</p>
-                        <p> Wynik punktowy: {{attempt.score_out_of }}</p>
-                        <p> Wynik %: {{ attempt.score_percent }}</p>
-                        <p> Zdał? {{attempt.passed}}</p>
-                        <p>-----------------------------------------------------</p>
-
-                    </div>
-                    {% endfor %}
-                {% endif %}  
-            {% endfor %}
-
+            <div class="d-flex justify-content-center mb-4">
+                <div class="quiz-option p-2 border rounded" style="width: 60%;">
+                    <h3><b>{{ quiz.title }}</b></h3>
+                    <p>{{ quiz.description }}</p>
+                </div>
+            </div>
+            <div class="row">
+                {% for key, value in tests.items %}
+                    {% if key == quiz.id and value %}
+                        {% for attempt in value %}
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                <div class="quiz-stat p-3 border rounded h-100" style="{% if attempt.passed == True %}background-color: #d4edda;{% endif %}">
+                                    <p>Quiz próbował robić: {{ attempt.taken_by }}</p>
+                                    <p>Klucz odpowiedzi - prawidłowy: {{ attempt.correct_key }}</p>
+                                    <p>Odpowiedzi użytkownika: {{ attempt.given_key }}</p>
+                                    <p>Wynik punktowy: {{ attempt.score_out_of }}</p>
+                                    <p>Wynik %: {{ attempt.score_percent }}</p>
+                                    <p>Zdał? {{ attempt.passed }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         {% endfor %}
     {% else %}
-        <p>Nie ma dostępnych żadnych quizów.</p>
+        <p class="text-center">Nie ma dostępnych żadnych quizów.</p>
     {% endif %}
 </div>
 {% endblock %}
