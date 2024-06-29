@@ -2,55 +2,72 @@
 {% block title %}- Stwórz Quiz{% endblock %}
 {% load static %}
 {% block content %}
-        <section id="quizy">
-            <div class="container">
-                <h2>Stwórz Nowy Quiz</h2>
-                <div class="form-group">
-                    <label for="quiz-name">Nazwa Quizu</label>
-                    <input type="text" id="quiz-name" placeholder="Wpisz nazwę quizu">
-                </div>
-                <div class="form-group">
-                    <label for="quiz-description">Opis Quizu</label>
-                    <input type="text" id="quiz-description" placeholder="Wpisz opis quizu">
-                </div>
-                <form id="create-quiz-form">
-                    <div class="form-group">
-                        <label for="question">Pytanie</label>
-                        <input type="text" id="question" placeholder="Wpisz treść pytania">
-                    </div>
+
+<section id="quizy">
+    <div class="container mt-4">
+        <h2>Stwórz Nowy Quiz</h2>
+        <form id="create-quiz-form">
+            <div class="form-group mb-3">
+                <label for="quiz-name">Nazwa Quizu</label>
+                <input type="text" id="quiz-name" class="form-control" placeholder="Wpisz nazwę quizu">
+            </div>
+            <div class="form-group mb-3">
+                <label for="quiz-description">Opis Quizu</label>
+                <input type="text" id="quiz-description" class="form-control" placeholder="Wpisz opis quizu">
+            </div>
+            <div class="form-group mb-3">
+                <label for="question">Pytanie</label>
+                <input type="text" id="question" class="form-control" placeholder="Wpisz treść pytania">
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="answer1">Odpowiedź 1</label>
-                        <input type="text" id="answer1" placeholder="Wpisz odpowiedź 1">
+                        <input type="text" id="answer1" class="form-control" placeholder="Wpisz odpowiedź 1">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="answer2">Odpowiedź 2</label>
-                        <input type="text" id="answer2" placeholder="Wpisz odpowiedź 2">
+                        <input type="text" id="answer2" class="form-control" placeholder="Wpisz odpowiedź 2">
                     </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="answer3">Odpowiedź 3</label>
-                        <input type="text" id="answer3" placeholder="Wpisz odpowiedź 3">
+                        <input type="text" id="answer3" class="form-control" placeholder="Wpisz odpowiedź 3">
                     </div>
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="answer4">Odpowiedź 4</label>
-                        <input type="text" id="answer4" placeholder="Wpisz odpowiedź 4">
+                        <input type="text" id="answer4" class="form-control" placeholder="Wpisz odpowiedź 4">
                     </div>
-                    <div class="form-group">
-                        <label for="correct-answer">Poprawna Odpowiedź</label>
-                        <select id="correct-answer">
-                            <option value="1">Odpowiedź 1</option>
-                            <option value="2">Odpowiedź 2</option>
-                            <option value="3">Odpowiedź 3</option>
-                            <option value="4">Odpowiedź 4</option>
-                        </select>
-                    </div>
-                    <button type="button" id="add-question-btn">Dodaj Pytanie</button>
-                </form>
-                <div id="questions-container">
-                    <h3>Dodane Pytania:</h3>
-                    <ul id="questions-list"></ul>
                 </div>
-                    <button id="submit-quiz-btn" class="btn btn-outline-success">Dodaj Quiz do Bazy</button>           
             </div>
-        </section>
-        <script src="{% static 'js/addquiz.js' %}"></script>
+            <div class="form-group mb-3">
+                <label for="correct-answer">Poprawna Odpowiedź</label>
+                <select id="correct-answer" class="form-select">
+                    <option value="1">Odpowiedź 1</option>
+                    <option value="2">Odpowiedź 2</option>
+                    <option value="3">Odpowiedź 3</option>
+                    <option value="4">Odpowiedź 4</option>
+                </select>
+            </div>
+            <div class="text-center mb-3">
+                <button type="button" id="add-question-btn" class="btn btn-primary">Dodaj Pytanie</button>
+            </div>
+        </form>
+        <div id="questions-container" class="mt-4">
+            <h3>Dodane pytania:</h3>
+            <ul id="questions-list" class="list-group"></ul>
+        </div>
+        <div class="text-center mt-4">
+            <button id="submit-quiz-btn" class="btn btn-outline-success">Dodaj Quiz do Bazy</button>
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/addquiz.js' %}"></script>
 {% endblock %}
