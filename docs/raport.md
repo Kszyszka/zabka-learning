@@ -1,61 +1,94 @@
-### Autorzy (Informatyka 2023/2024 Semestr 2.):
-#### Krzysztof Hager 52687 - Lider
-#### Elian Godyń
-#### Jakub Grzęda
-#### Kacper Grzesik
-#### Michał Fuławka
+### Autorzy (Informatyka 2023/2024 Semestr 2. - Grupa Ćwiczeniowa nr. 2):
+- #### Krzysztof Hager 52687 - Lider "Kszyszka@Github"
+- #### Elian Godyń 52678 - "Eli3001@Github"
+- #### Jakub Grzęda 52682 - "Keczuk@Github"
+- #### Kacper Grzesik 52684 - "kgrzesik17@Github"
+- #### Michał Fuławka 52675 - "MichalFulawka330@Github"
 ## [Link do repozytorium](https://github.com/Kszyszka/zabka-learning) - https://github.com/Kszyszka/zabka-learning
 # Raport: Projekt Zaliczeniowy - Platforma e-learningowa z quizami i śledzeniem postępów. (***Qmaj Rzabe***)
 
 ## Wprowadzenie
 
-W tym dokumentcie przedstawiam proces tworzenia programu księgowego z obsługą różnic kursowych - zadanie z ćwiczeń 3-4 z Podstaw Programowania w Języku Python.
+W tym dokumentcie przedstawiamy proces tworzenia Platformy e-learningowej z quizami i śledzeniem postępów (Web Development) - Qmaj Rzabe (Kumaj Żabe), błąd ortograficzny został popełniony z premedytacją, w celu zwrócenia uwagi.
 
 ## Założenia
 
-Założenia programu były następujące:
-- Zarządzanie fakturami (tworzenie nowych, sprawdzanie statusów)
-- Zarządzanie wpłatami (tworzenie nowych, usuwanie, szukanie zależności z fakturami)
-- Różnice kursowe (wyliczanie dowolnych, integracja z wpłatami i fakturami)
-- Obsługa lokalnych baz danych (jako zapis do plików) - TinyDB
-- Wykluczenie jak najwięcej ilości błędów ludzkich
-- Budowa hierarchiczna:
+Założenia projektu były następujące:
+- Program ma być aplikacją webową (fullstack).
+- Program ma korzystać z Frameworku Django, z backendem komunikującym się z bazą sqlite (na skale tego projektu taka baza jest wygodniejszym rozwiązaniem).
+- Program ma obsługiwać Panel Użytkownika, z poziomu którego możliwe jest tworzenie własnych testów oraz podglądanie postępów w próbach jego wykonania.
+- Program ma obsługiwać wykonywanie testów zarówno jako zalogowany użytkownik jak i Gość.
+- Program ma obsługiwać statystyki odpowiedzi do testów, dostępny z poziomu Panelu Użytkownika.
 
 ## Tworzenie programu
 
-Początkowo, program miał być rozbity na 1-2 moduły. Jednak bardzo szybko przekonałem się, że przy moich założeniach projekt będzie bardzo chaotyczny.
+Analizując pomysł na platformę, doszliśmy do następujących konkluzji:
+- Projekt będzie podzielony na więcej mniejszych aplikacji, w celu ułatwienia pracy zespołowej i uniknięcia konfliktów przy korzystaniu grupowego z Gita:
+    - HomeAPP - Aplikacja odpowiedzialna za stronę domową, jej widoki, logikę oraz przekierowania
+    - UsersAPP - Aplikacja odpowiedzialna za zarządzanie użytkownikami, zbudowana na podstawie Django Auth, pozwala m.in. na logowanie i rejestrację.
+    - QuizAPP - Aplikacja służąca do obsługi Panelu Użytkownika, oraz wszelkich działań związanych z zarządzaniem testami z jego poziomu (główny moduł programu, przeznaczony dla zalogowanych użytkowników).
+    - TestsAPP - Aplikacja słuząca do obsługi wykonywania testów zarówno przez zalogowanych użytkowników jak i Gości.
 
-W związku z tym został rozbity na 4 części: faktury, wpłaty, różnice kursowe i bazy danych - przy czym każda z części zyskała własny moduł.
+Projekt pozwolił członkom zespołu pierwszy raz korzystać z gita w praktyczny sposób przy kolaboracyjnej pracy. Dzięki jego wykorzystaniu możliwe były powroty do działających wersji oraz szybka współpraca przy tworzeniu zależnych od siebie modułów.
 
-W domyśle, użytkownik działa jedynie na funkcjach dostępnych z modułów wpłaty oraz faktury. Waluty oraz bazy danych nie są zbyt dostępne dla użytkownika, ponieważ dane są walidowane w dwóch pierwszych modułach, a pozostałe pełnią funkcje wspomagające i końcowe (można je uznać za pewnego rodzaju backend, mimo że nim nie jest).
+Wybór Frameworka Django do wykonania projektu okazał się dobrym pomysłem. Dzięki niemu byliśmy w stanie w nowoczesny sposób podzielić się pracą na każdą aplikację, współpracować oraz konsultować się co do funkcjonalności i ją modyfikować, bez zepsucia ogółu programu.
 
-Pomysły dodatkowych funkcjonalności powstawały w trakcie pisania projektu, jednak zdecydowanie największą jego częścią jest poprawne wprowadzanie danych oraz wykluczanie błędu ludzkiego, którego obecność mogłaby rozsypać bazę i tworzyć jeszcze więcej błędów w przyszłości.
+Zespół podzieliliśmy wstępnie na front-end:
+- Jakub Grzęda
+- Michał Fuławka
+
+Oraz back-end:
+- Krzysztof Hager
+- Elian Godyń
+- Kacper Grzesik
+
+Jednak mimo to, każdy członek zespołu miał stycznośc zarówno z front-endem (HTML, CSS, JS) jak i back-endem (Python). Dzięki temu wszystkie aplikacje mogły być równolegle rozwijane z obu stron.
+
+Podjęliśmy technikę mergowania branchy na repozytorium, w celu zachowania informacji o wszystkich commitach oraz ich historii (dostępne na Github, wraz z przypisanymi osobami). Backlog projektu był prowadzony w GitHub Projects - https://github.com/users/Kszyszka/projects/2
 
 ## Napotkane problemy
 
-1. Przypisywanie klucza podstawowego fakturom i wpłatom
-2. Praca przy pustych bazach danych (próba odwołania się do niczego)
-3. Poprawna walidacja wprowadzanych danych oraz API (dużo miejsc na popełnienie różnych błędów)
-4. Dodawanie specjalnych atrybutów do klas, które są zależne od innych modułów (np. klucz podstawowy do bazy, kurs z API)
-5. Pisanie nieuniwersalnych funkcji, przez co początkowo wymagane było powtarzanie kodu
-6. Zachowanie czystości kodu, uniwersalnego sposobu wypisywania danych etc.
+1. Brak znajomości Frameworka Django - skok na głęboką wodę.
+2. Problemy ze zrozumieniem logiki, views, struktury projektu narzuconej przez Django (static, templates, apps, etc.).
+3. Rozszerzenie Django Auth.
+4. Zrozumienie Jinja2
+5. Problemy z wieloosobową obsługą Git.
+6. Problemy przy zaawansowanej obsłudze POST.
+7. Problemy z integracją Pythona z HTML oraz automatycznym generowaniem zawartości stron.
 
 ## Rozwiązanie problemów
 
-1. Zdobywanie klucza podstawowego poprzez znalezienie ostatniego klucza w bazie i dodania do niego '1'. Po późniejszym rozeznaniu tematu, TinyDB sam przypisuje klucze podstawowe do rekordów, jednak moje rozwiązanie (id jako klucz podstawowy w atrybucie klasy), pozwala na całkiem zręczne wykorzystanie z innymi modułami.
-
-2. Ustawianie pustego rekordu zerowego, wtedy jeśli baza jest pusta, powstaje rekord '0', który po odczytaniu zwróci klucz podstawowy '1'. Reszta działa bez problemu.
-
-3. Zamknięcie walidacji w metodach *is_valid(self)*, która uzależnia dalsze działanie programu i zapisy do baz od wyniku walidacji.
-
-4. Atrybuty są odczytywane z modułów bazy danych oraz walut i zaczytywane z pomocą *setattr()*. Z perspektywy czasu, mogłem dodać do klas po prostu opcjonalny atrybut, który w przypadku nie podania zaczytywałby dane z dodatkowych modułów, a w przypadku podania nie musiałby obciążać reszty programu.
-
-5. Przepisywanie funkcji w sposób pozwalający na ich wykorzystanie w więcej niż jednym miejscu i odwoływanie się do nich w sposób naturalny i czytelny.
-
-6. Przy zachowaniu czystości pomógł mi przede wszystkim pylint. Jednak tak naprawdę kod mógł zostać dopiero oczyszczony po zakończeniu pisania całego programu. Wtedy usunięte zostały rzadko wykorzystane funkcje i metody, w wyniku testów manualnych wszystkie wypisy danych zostały ujednolicone.
+1. Konsultacje z członkami zespołu, tutoriale, wspomaganie się dokumentacją Django.
+2. Konsultacje z członkami zespołu, metoda prób i błędów do momentu samoistnego zrozumienia.
+3. Zmodyfikowanie wykorzystania Auth w innych aplikacjach, w celu lepszej współpracy z domyślnym Django Auth.
+4. Konsultacje z członkami zespołu, metoda prób i błędów do momentu samoistnego zrozumienia.
+5. Nauka nt. Gita z oficjalnej dokumentacji, zgłębienie informacji m.in. o Merge Conflictach, dzielenie się wiedzą w zespole.
+6. Przepuszczenie przez JavaScript jako middleware.
+7. Poszerzenie wiedzy z zakresu Jinja2.
 
 ## Podsumowanie
 
-Był to zdecydowanie najbardziej zawiły i największy program jaki miałem okazję napisać. Największą rzeczą, jaką udało mi się wyciągnąć z tego doświadczenia, to to, w jaki sposób myśleć oraz pisać, aby kod działał w przyszłości - kiedy projekt będzie się rozrastał. A nie pisać tylko kod, który będzie działał przez chwilę, dla jednego zadania.
+Wykonanie projektu pozwoliło każdemu członkowi na praktyczne zapoznanie się z Gitem, Pythonem przy Web Developmencie oraz Frameworkiem Django. Początkowo skok na głęboką wodę poprzez wybranie nieznanych przez nikogo z zespołu technologie był problematyczny, spowolnił pracę i tworzył problemy w morale zespołu. Jednak po czasie, kiedy każdy zdążył się już zapoznać z wymaganymi technologiami, wybów Django okazał się dobrym pomysłem.
 
-## Załączniki
+Pozwoliło to nam stworzyć prototyp aplikacji zgodnie z nowoczesnymi standardami oraz uczestniczyć w projekcie w sposób podobny jak byłoby to wykonane w środowisku komeryjnym.
+
+## Wykorzystane technologie
+
+- Python
+- Django
+- Bootstrap
+- JavaScript
+- CSS
+- SQLite
+- Git
+
+## Źródła wiedzy
+
+- https://docs.djangoproject.com/en/5.0/
+- https://jinja.palletsprojects.com/en/3.1.x/
+- https://stackoverflow.com/
+- https://www.youtube.com/@TechWithTim
+- https://www.youtube.com/@crycetruly
+- https://getbootstrap.com/docs/4.1/getting-started/introduction/
+- https://www.youtube.com/@code-4-design
+- ChatGPT

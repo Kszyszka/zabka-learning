@@ -62,7 +62,7 @@ def results(request):
             logger.error(f'-----------Rzucam exception: {e}')
             return redirect('testlist')
 
-    return render(request, 'test/results.html')
+    return redirect('testlistguest')
 
 def attend_quiz_guest(request, quiz_id):
     quiz = get_object_or_404(Quiz, id=quiz_id)
