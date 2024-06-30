@@ -3,21 +3,27 @@
 {% block title %}- Wszystkie Quizy{% endblock %}
 
 {% block content %}
-<div>
-    <h3 class="text-center">Wszystkie Dostępne Quizy</h3>
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Wszystkie Dostępne Quizy</h3>
     {% if quizzes %}
-        <div class="d-flex flex-wrap justify-content-start gap-3">
+        <div class="row">
             {% for quiz in quizzes %}
-                <a href="/attend/guest/{{ quiz.id }}" class="text-decoration-none text-center" style="width: 20%;">
-                    <div class="quiz-option p-3 border rounded">
-                        <h3><b>{{ quiz.title }}</b></h3>
-                        <p>{{ quiz.description }}</p>
-                    </div>
-                </a>
+                <div class="col-md-4 mb-4">
+                    <a href="/attend/guest/{{ quiz.id }}" class="text-decoration-none">
+                        <div class="quiz-option card shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <h4 class="card-title"><b>{{ quiz.title }}</b></h4>
+                                <p class="card-text">{{ quiz.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     {% else %}
-        <p>Nie ma dostępnych żadnych quizów.</p>
+        <div class="alert alert-warning" role="alert">
+            Nie ma dostępnych żadnych quizów.
+        </div>
     {% endif %}
 </div>
 {% endblock %}
