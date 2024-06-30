@@ -10,6 +10,7 @@ Django zostanie automatycznie pobrane przy przestrzeganiu poniższych instrukcji
 
 W pierwszej kolejności przejdź do folderu projektu:
 ```
+git clone git@github.com:Kszyszka/zabka-learning.git
 cd zabka-learning
 ```
 Pobierz wymagane biblioteki:
