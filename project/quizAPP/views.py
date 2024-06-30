@@ -88,7 +88,7 @@ def question_list(request, quiz_id):
     return render(request, 'quiz/questionlist.html', {'quiz': quiz})
 
 def test_list(request):
-    quiz_list = Quiz.objects.all()
+    quiz_list = Quiz.objects.all().filter(created_by = request.user)
     return render(request,"quiz/testlist.html",{'quizzes': quiz_list})
 
 def test_list_guest(request):
